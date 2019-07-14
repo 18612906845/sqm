@@ -215,7 +215,7 @@ public class ObjectTransitionUtil extends CommonUtil {
         pgd.setGoodsId(item.getGoodsId());
         pgd.setGoodsName(item.getGoodsName());
         pgd.setGoodsImgUrl(item.getGoodsThumbnailUrl());
-        pgd.setSalesVolume(item.getSoldQuantity());
+        pgd.setSalesVolume(this.isInteger(item.getSalesTip()) ? Long.valueOf(item.getSalesTip()) : 0);
         pgd.setMinGroupPrice(this.fenToYuan(item.getMinGroupPrice()));
         pgd.setMinNormalPrice(this.fenToYuan(item.getMinNormalPrice()));
         pgd.setHasCoupon(item.getHasCoupon() ? 1 : 2);

@@ -14,6 +14,7 @@ import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.regex.Pattern;
 
 /**
  * 公共工具方法
@@ -23,6 +24,16 @@ public class CommonUtil {
     private static Logger LOGGER = LogManager.getLogger(CommonUtil.class);
 
     protected static final String YYYY_MM_DD_HH_MM_SS = "yyyy-MM-dd HH:mm:ss";
+
+    /*方法二：推荐，速度最快
+     * 判断是否为整数
+     * @param str 传入的字符串
+     * @return 是整数返回true,否则返回false
+     */
+    public boolean isInteger(String str) {
+        Pattern pattern = Pattern.compile("^[-\\+]?[\\d]*$");
+        return pattern.matcher(str).matches();
+    }
 
     /**
      * 日期格式化成字符串
