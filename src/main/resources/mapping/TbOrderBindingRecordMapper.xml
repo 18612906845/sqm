@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.com.jgyhw.sqm.mapper.TbOrderBindingRecordMapper">
+  <resultMap id="BaseResultMap" type="cn.com.jgyhw.sqm.domain.TbOrderBindingRecord">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="tb_order_id" jdbcType="VARCHAR" property="tbOrderId" />
+    <result column="wx_user_id" jdbcType="BIGINT" property="wxUserId" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, tb_order_id, wx_user_id, status, create_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_order_binding_record
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from tb_order_binding_record
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.com.jgyhw.sqm.domain.TbOrderBindingRecord">
+    insert into tb_order_binding_record (id, tb_order_id, wx_user_id, 
+      status, create_time, update_time
+      )
+    values (#{id,jdbcType=VARCHAR}, #{tbOrderId,jdbcType=VARCHAR}, #{wxUserId,jdbcType=BIGINT}, 
+      #{status,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.com.jgyhw.sqm.domain.TbOrderBindingRecord">
+    insert into tb_order_binding_record
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="tbOrderId != null">
+        tb_order_id,
+      </if>
+      <if test="wxUserId != null">
+        wx_user_id,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="tbOrderId != null">
+        #{tbOrderId,jdbcType=VARCHAR},
+      </if>
+      <if test="wxUserId != null">
+        #{wxUserId,jdbcType=BIGINT},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.com.jgyhw.sqm.domain.TbOrderBindingRecord">
+    update tb_order_binding_record
+    <set>
+      <if test="tbOrderId != null">
+        tb_order_id = #{tbOrderId,jdbcType=VARCHAR},
+      </if>
+      <if test="wxUserId != null">
+        wx_user_id = #{wxUserId,jdbcType=BIGINT},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.com.jgyhw.sqm.domain.TbOrderBindingRecord">
+    update tb_order_binding_record
+    set tb_order_id = #{tbOrderId,jdbcType=VARCHAR},
+      wx_user_id = #{wxUserId,jdbcType=BIGINT},
+      status = #{status,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+
+  <select id="selectTbOrderBindingRecordByTbOrderId" parameterType="String" resultType="cn.com.jgyhw.sqm.domain.TbOrderBindingRecord">
+    select * from tb_order_binding_record where tb_order_id = #{tbOrderId}
+  </select>
+
+  <select id="selectTbOrderBindingRecordListByWxUserIdAndStatusPage" resultType="cn.com.jgyhw.sqm.domain.TbOrderBindingRecord">
+    select * from tb_order_binding_record
+    <where>
+      <if test="wxUserId != 0">
+        and wx_user_id = #{wxUserId}
+      </if>
+      <if test="status != 0">
+        and status = #{status}
+      </if>
+    </where>
+    order by update_time desc
+  </select>
+</mapper>

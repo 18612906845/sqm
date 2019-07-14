@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=8,IE=Edge,chrome=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>菜单管理</title>
+</head>
+<div th:replace="base/import-common.html :: #importPage-xtgl"></div>
+<link rel="stylesheet" th:href="@{/common/library/zTree_v3/css/zTreeStyle/zTreeStyle.css}" href="../../../common/library/zTree_v3/css/zTreeStyle/zTreeStyle.css">
+<script th:src="@{/common/library/zTree_v3/js/jquery.ztree.core.js}" src="../../../common/library/zTree_v3/js/jquery.ztree.core.js"></script>
+<script th:src="@{/common/library/zTree_v3/js/jquery.ztree.excheck.js}" src="../../../common/library/zTree_v3/js/jquery.ztree.excheck.js"></script>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+    <!--页头-->
+    <div th:replace="xtgl/top.html :: #topPage"></div>
+
+    <!--左侧菜单-->
+    <div th:replace="xtgl/menu.html :: #menuPage"></div>
+
+    <!--内容主体区域-->
+    <div class="layui-body">
+        <div class="layui-row">
+            <div class="layui-col-md3">
+                <div style="padding: 10px 10px 0px 10px;text-align: center;">
+                    <h2>自定义菜单树</h2>
+                </div>
+            </div>
+            <div class="layui-col-md9">
+                <div class="layui-col-md6">
+                    <div style="padding: 10px 10px 0px 10px;text-align: center;">
+                        <h2>自定义菜单详情</h2>
+                    </div>
+                </div>
+                <div class="layui-col-md6">
+                    <div class="layui-col-md6">
+                        <div style="padding: 10px 20px 0px 10px;text-align: right;">
+                            <button id="newBut" class="layui-btn layui-btn-sm layui-btn-normal">新增</button>
+                            <button id="updateBut" class="layui-btn layui-btn-sm layui-btn-warm" style="display: none;">修改</button>
+                            <button id="deleteBut" class="layui-btn layui-btn-sm layui-btn-danger" style="display: none;">删除</button>
+                        </div>
+                    </div>
+                    <div class="layui-col-md6">
+                        <div style="padding: 10px 20px 0px 10px;text-align: right;">
+                            <button id="syncWeChatServerBut" class="layui-btn layui-btn-sm" style="display: none;">上传菜单到服务器</button>
+                            <button id="deleteWeChatServerBut" class="layui-btn layui-btn-sm layui-btn-danger">删除微信服务器菜单</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr class="layui-bg-orange">
+        <div class="layui-row">
+            <div class="layui-col-md3">
+                <div style="padding: 20px;">
+                    <ul id="treeDiyMenu" class="ztree"></ul>
+                </div>
+            </div>
+            <div class="layui-col-md9">
+                <form id="diyMenuForm" class="layui-form" style="padding: 20px;display: none;" lay-filter="diyMenuForm">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label"><span class="layui-badge-dot requiredSpanRed"></span> 菜单级别</label>
+                        <div class="layui-input-block">
+                            <select name="levelNum" lay-verify="required" disabled lay-filter="levelNum">
+                                <option value=""></option>
+                                <option value="1">一级菜单</option>
+                                <option value="2">二级菜单</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label"><span class="layui-badge-dot requiredSpanRed"></span> 菜单名称</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="menuName" readonly lay-verify="required|menuNameVerify" placeholder="请输入菜单名称" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label"><span class="layui-badge-dot requiredSpanRed"></span> 响应动作类型</label>
+                        <div class="layui-input-block">
+                            <select name="actionType" lay-verify="required" disabled lay-filter="actionType">
+                                <option value=""></option>
+                                <option value="click">点击推事件</option>
+                                <option value="view">跳转URL</option>
+                                <option value="scancode_push">扫码推事件</option>
+                                <option value="scancode_waitmsg">扫码推事件弹框</option>
+                                <option value="pic_sysphoto">弹出系统拍照发图</option>
+                                <option value="pic_photo_or_album">弹出拍照或者相册发图</option>
+                                <option value="pic_weixin">弹出微信相册发图器</option>
+                                <option value="location_select">弹出地理位置选择器</option>
+                                <option value="media_id">可下发图片、音频、视频、图文消息永久素材</option>
+                                <option value="view_limited">可下发图文消息永久素材</option>
+                                <option value="miniprogram">小程序类型</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label"><span id="menuKeyRed" class="layui-badge-dot spanRed" style="display: none;"></span> 菜单KEY值</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="menuKey" readonly placeholder="请输入菜单KEY值" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label"><span id="urlRed" class="layui-badge-dot spanRed" style="display: none;"></span> 网页链接</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="url" readonly placeholder="请输入网页链接" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label"><span id="mediaIdRed" class="layui-badge-dot spanRed" style="display: none;"></span> MediaId</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="mediaId" readonly placeholder="请输入mediaId" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label"><span id="appIdRed" class="layui-badge-dot spanRed" style="display: none;"></span> 小程序AppId</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="appId" readonly placeholder="请输入小程序AppId" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label"><span id="pagePathRed" class="layui-badge-dot spanRed" style="display: none;"></span> 小程序页面路径</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="pagePath" readonly placeholder="请输入小程序页面路径" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label"><span id="parentIdRed" class="layui-badge-dot" style="display: none;"></span> 父级菜单</label>
+                        <div class="layui-input-block">
+                            <select name="parentId" disabled lay-filter="parentId">
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label"><span id="orderNumRed" class="layui-badge-dot" style="display: none;"></span> 排序号</label>
+                        <div class="layui-input-block">
+                            <select name="orderNum" disabled>
+                                <option value=""></option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div id="operationDiv" class="layui-input-block" style="display: none;">
+                            <button id="save" class="layui-btn" lay-submit lay-filter="diyMenuFormSaveSubmit">保存</button>
+                            <button id="update" class="layui-btn" lay-submit lay-filter="diyMenuFormUpdateSubmit">保存</button>
+                            <button id="cancelBut" class="layui-btn layui-btn-normal">取消</button>
+                            <button id="resetBut" type="reset" class="layui-btn layui-btn-primary">重置</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!--页脚-->
+    <div th:replace="xtgl/footer.html :: #footerPage"></div>
+</div>
+<div th:replace="base/import-common.html :: commonJs-pc"></div>
+<script th:src="@{/scripts/xtgl/wxGzhMenuManage.js(v='2019041401')}"></script>
+</body>
+</html>

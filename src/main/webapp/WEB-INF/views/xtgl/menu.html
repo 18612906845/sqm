@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<div id="menuPage" class="layui-side layui-bg-black">
+    <div class="layui-side-scroll">
+        <ul class="layui-nav layui-nav-tree" lay-filter="test">
+            <li id="systemIndex" class="layui-nav-item"><a th:href="@{/smiXtglAuth/openIndexPage}">首页</a></li>
+            <li id="systemSettings" class="layui-nav-item">
+                <a href="javascript:;">系统设置</a>
+                <dl class="layui-nav-child">
+                    <dd><a id="parameterSetting" th:href="@{/xpsXtglAuth/openParameterSettingListPage}">参数配置</a></dd>
+                </dl>
+            </li>
+            <li id="weChatParamManage" class="layui-nav-item">
+                <a href="javascript:;">微信设置</a>
+                <dl class="layui-nav-child">
+                    <dd><a id="wxTokenManage" th:href="@{/xwtXtglAuth/openWxTokenManagePage}">令牌管理</a></dd>
+                    <dd><a id="wxGzhMenuManage" th:href="@{/xwgmtXtglAuth/openWxGzhMenuManagePage}">菜单管理</a></dd>
+                </dl>
+            </li>
+            <li id="businessData" class="layui-nav-item">
+                <a href="javascript:;">业务数据</a>
+                <dl class="layui-nav-child">
+                    <dd><a id="withdrawCashRecord" th:href="@{/xwcrXtglAuth/openWithdrawCashRecordListPage}">提现申请记录</a></dd>
+                    <dd><a id="wxUserList" th:href="@{/xwuXtglAuth/openWxUserListPage}">微信用户列表</a></dd>
+                    <dd><a id="orderRecordList" th:href="@{/xorXtglAuth/openOrderRecordListPage}">推广订单记录</a></dd>
+                    <dd><a id="popularizeTarget" th:href="@{/xptXtglAuth/openPopularizeTargetPage}">推广主体管理</a></dd>
+                </dl>
+            </li>
+        </ul>
+    </div>
+</div>
+</html>

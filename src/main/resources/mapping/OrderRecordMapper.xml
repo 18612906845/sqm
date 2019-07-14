@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.com.jgyhw.sqm.mapper.OrderRecordMapper">
+  <resultMap id="BaseResultMap" type="cn.com.jgyhw.sqm.domain.OrderRecord">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="order_id" jdbcType="VARCHAR" property="orderId" />
+    <result column="order_time" jdbcType="TIMESTAMP" property="orderTime" />
+    <result column="finish_time" jdbcType="TIMESTAMP" property="finishTime" />
+    <result column="commission" jdbcType="DOUBLE" property="commission" />
+    <result column="return_money" jdbcType="DOUBLE" property="returnMoney" />
+    <result column="platform" jdbcType="INTEGER" property="platform" />
+    <result column="wx_user_id" jdbcType="BIGINT" property="wxUserId" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, order_id, order_time, finish_time, commission, return_money, platform, wx_user_id,
+    status, create_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from order_record
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from order_record
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.com.jgyhw.sqm.domain.OrderRecord">
+    insert into order_record (id, order_id, order_time,
+      finish_time, commission, return_money,
+      platform, wx_user_id, status,
+      create_time, update_time)
+    values (#{id,jdbcType=VARCHAR}, #{orderId,jdbcType=VARCHAR}, #{orderTime,jdbcType=TIMESTAMP},
+      #{finishTime,jdbcType=TIMESTAMP}, #{commission,jdbcType=DOUBLE}, #{returnMoney,jdbcType=DOUBLE},
+      #{platform,jdbcType=INTEGER}, #{wxUserId,jdbcType=BIGINT}, #{status,jdbcType=INTEGER},
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.com.jgyhw.sqm.domain.OrderRecord">
+    insert into order_record
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="orderId != null">
+        order_id,
+      </if>
+      <if test="orderTime != null">
+        order_time,
+      </if>
+      <if test="finishTime != null">
+        finish_time,
+      </if>
+      <if test="commission != null">
+        commission,
+      </if>
+      <if test="returnMoney != null">
+        return_money,
+      </if>
+      <if test="platform != null">
+        platform,
+      </if>
+      <if test="wxUserId != null">
+        wx_user_id,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="orderId != null">
+        #{orderId,jdbcType=VARCHAR},
+      </if>
+      <if test="orderTime != null">
+        #{orderTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="finishTime != null">
+        #{finishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="commission != null">
+        #{commission,jdbcType=DOUBLE},
+      </if>
+      <if test="returnMoney != null">
+        #{returnMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="platform != null">
+        #{platform,jdbcType=INTEGER},
+      </if>
+      <if test="wxUserId != null">
+        #{wxUserId,jdbcType=BIGINT},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.com.jgyhw.sqm.domain.OrderRecord">
+    update order_record
+    <set>
+      <if test="orderId != null">
+        order_id = #{orderId,jdbcType=VARCHAR},
+      </if>
+      <if test="orderTime != null">
+        order_time = #{orderTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="finishTime != null">
+        finish_time = #{finishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="commission != null">
+        commission = #{commission,jdbcType=DOUBLE},
+      </if>
+      <if test="returnMoney != null">
+        return_money = #{returnMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="platform != null">
+        platform = #{platform,jdbcType=INTEGER},
+      </if>
+      <if test="wxUserId != null">
+        wx_user_id = #{wxUserId,jdbcType=BIGINT},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.com.jgyhw.sqm.domain.OrderRecord">
+    update order_record
+    set order_id = #{orderId,jdbcType=VARCHAR},
+      order_time = #{orderTime,jdbcType=TIMESTAMP},
+      finish_time = #{finishTime,jdbcType=TIMESTAMP},
+      commission = #{commission,jdbcType=DOUBLE},
+      return_money = #{returnMoney,jdbcType=DOUBLE},
+      platform = #{platform,jdbcType=INTEGER},
+      wx_user_id = #{wxUserId,jdbcType=BIGINT},
+      status = #{status,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+
+  <select id="selectOrderRecordByOrderIdAndPlatform" resultType="cn.com.jgyhw.sqm.domain.OrderRecord">
+    select * from order_record where order_id = #{orderId} and platform = #{platform}
+  </select>
+
+  <select id="selectOrderRecordSumByWxUserIdAndStatus" resultType="int">
+    select count(*) from order_record
+    <where>
+      <if test="wxUserId != null and wxUserId != ''">
+        and wx_user_id = #{wxUserId}
+      </if>
+      <if test="status != 0">
+        and status = #{status}
+      </if>
+    </where>
+  </select>
+
+  <select id="selectConfirmedOrderList" resultType="cn.com.jgyhw.sqm.domain.OrderRecord">
+    select * from order_record where ((status = #{status1} and platform = #{platform1}) or (status = #{status2} and platform = #{platform2}) or (status = #{status3} and platform = #{platform3})) and wx_user_id = #{wxUserId} order by order_time desc
+  </select>
+
+  <select id="selectOrderRecordListByWxUserIdAndStatus" resultType="cn.com.jgyhw.sqm.domain.OrderRecord">
+    select * from order_record
+    <where>
+      <if test="wxUserId != null and wxUserId != ''">
+        and wx_user_id = #{wxUserId}
+      </if>
+      <if test="status != 0">
+        and status = #{status}
+      </if>
+    </where>
+    order by order_time desc
+  </select>
+
+  <select id="selectOrderRecordListByWxUserIdAndMultiStatus" resultType="cn.com.jgyhw.sqm.domain.OrderRecord">
+    select * from order_record
+    <where>
+      <if test="wxUserId != null and wxUserId != ''">
+        and wx_user_id = #{wxUserId}
+      </if>
+      and status in
+      <foreach collection="statusList" item="id" index="index" open="(" close=")" separator=",">
+        #{id}
+      </foreach>
+    </where>
+    order by order_time desc
+  </select>
+
+  <select id="selectEstimateReturnMoneySum" resultType="Double">
+    select sum(return_money) from order_record where ((status = #{status1} and platform = #{platform1}) or (status = #{status2} and platform = #{platform2}) or (status = #{status3} and platform = #{platform3})) and wx_user_id = #{wxUserId}
+  </select>
+  
+  <select id="selectReturnMoneySumByWxUserIdAndStatus" resultType="Double">
+    select sum(return_money) from order_record where wx_user_id = #{wxUserId} and status = #{status}
+  </select>
+
+  <select id="selectOrderRecordListByConditionPage" resultType="cn.com.jgyhw.sqm.domain.OrderRecord">
+    select orec.*, wu.parent_wx_user_id, wu.nick_name, wu.head_img_url from order_record as orec, wx_user as wu where orec.wx_user_id = wu.id
+    <if test="wxUserId != 0">
+      and wx_user_id = #{wxUserId}
+    </if>
+    <if test="orderId != null and orderId != ''">
+      and order_id = #{orderId}
+    </if>
+    <if test="platform != 0">
+      and platform = #{platform}
+    </if>
+    <if test="status != 0">
+      and status = #{status}
+    </if>
+    order by ${orderField} desc
+  </select>
+
+  <select id="selectOrderRecordListByFinishTimeAndStatusAndPlatform" resultType="cn.com.jgyhw.sqm.domain.OrderRecord">
+    select * from order_record
+    <where>
+      <if test="finishTimeStr != null and finishTimeStr != ''">
+        and finish_time &lt;= #{finishTimeStr}
+      </if>
+      <if test="status != 0">
+        and status = #{status}
+      </if>
+      <if test="platform != 0">
+        and platform = #{platform}
+      </if>
+    </where>
+  </select>
+</mapper>

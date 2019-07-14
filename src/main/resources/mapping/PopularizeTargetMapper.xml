@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.com.jgyhw.sqm.mapper.PopularizeTargetMapper">
+  <resultMap id="BaseResultMap" type="cn.com.jgyhw.sqm.domain.PopularizeTarget">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="target_name" jdbcType="VARCHAR" property="targetName" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="wx_user_id" jdbcType="BIGINT" property="wxUserId" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="binding_time" jdbcType="TIMESTAMP" property="bindingTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, target_name, name, phone, address, wx_user_id, create_time, binding_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from popularize_target
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from popularize_target
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="cn.com.jgyhw.sqm.domain.PopularizeTarget" useGeneratedKeys="true" keyProperty="id">
+    insert into popularize_target (id, target_name, name, 
+      phone, address, wx_user_id, 
+      create_time, binding_time, update_time
+      )
+    values (#{id,jdbcType=BIGINT}, #{targetName,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{phone,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{wxUserId,jdbcType=BIGINT}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{bindingTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.com.jgyhw.sqm.domain.PopularizeTarget">
+    insert into popularize_target
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="targetName != null">
+        target_name,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="wxUserId != null">
+        wx_user_id,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="bindingTime != null">
+        binding_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="targetName != null">
+        #{targetName,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="wxUserId != null">
+        #{wxUserId,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="bindingTime != null">
+        #{bindingTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.com.jgyhw.sqm.domain.PopularizeTarget">
+    update popularize_target
+    <set>
+      <if test="targetName != null">
+        target_name = #{targetName,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="wxUserId != null">
+        wx_user_id = #{wxUserId,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="bindingTime != null">
+        binding_time = #{bindingTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.com.jgyhw.sqm.domain.PopularizeTarget">
+    update popularize_target
+    set target_name = #{targetName,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      wx_user_id = #{wxUserId,jdbcType=BIGINT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      binding_time = #{bindingTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+  <select id="selectPopularizeTargetByWxUserId" parameterType="Long" resultType="cn.com.jgyhw.sqm.domain.PopularizeTarget">
+    select * from popularize_target where wx_user_id = #{wxUserId}
+  </select>
+
+  <select id="selectPopularizeTargetByWxUserIdAndKeywordPage" resultType="cn.com.jgyhw.sqm.domain.PopularizeTarget">
+    select * from popularize_target
+    <where>
+      <if test="wxUserId != 0">
+        and wx_user_id = #{wxUserId}
+      </if>
+      <if test="keyword != null and keyword != ''">
+        and (target_name LIKE CONCAT('%',#{keyword},'%') or name LIKE CONCAT('%',#{keyword},'%') or phone LIKE CONCAT('%',#{keyword},'%') or address LIKE CONCAT('%',#{keyword},'%'))
+      </if>
+    </where>
+    order by create_time desc
+  </select>
+</mapper>

@@ -1,0 +1,34 @@
+/*页脚*/
+.footer {
+    position: fixed;
+    width: 100%;
+    bottom: 0px;
+}
+.footer-top {
+    height: 30px;
+    width: 100%;
+    background-color: #38383A;
+    border-top: 2px solid #d2364c;
+
+}
+.center-content {
+    width: 1200px;
+    margin: auto;
+    height: 100%;
+    color: #fff;
+    text-align: center;
+}
+.center-content p {
+    margin: 0px;
+    line-height: 25px;
+}
+.center-content a {
+    color: #FFF;
+    text-decoration:none;
+    cursor:pointer;
+}
+.footer-centre {
+    height: 150px;
+    width: 100%;
+    background-color: #434446;
+}

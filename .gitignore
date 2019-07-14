@@ -1,0 +1,8 @@
+*.iml
+.idea/
+overlays/
+target/
+*.releaseBackup
+release.properties
+doc/doc-service-msoffice-impl/templateconfig/out/
+bjqb-analysis/bjqb-analysis-resource/bjqb-analysis-resource.iml___jb_tmp___

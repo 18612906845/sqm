@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.com.jgyhw.sqm.mapper.ReturnMoneyChangeRecordMapper">
+  <resultMap id="BaseResultMap" type="cn.com.jgyhw.sqm.domain.ReturnMoneyChangeRecord">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="wx_user_id" jdbcType="BIGINT" property="wxUserId" />
+    <result column="change_type" jdbcType="INTEGER" property="changeType" />
+    <result column="change_time" jdbcType="TIMESTAMP" property="changeTime" />
+    <result column="change_money" jdbcType="DOUBLE" property="changeMoney" />
+    <result column="target_id" jdbcType="VARCHAR" property="targetId" />
+    <result column="order_id" jdbcType="VARCHAR" property="orderId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, wx_user_id, change_type, change_time, change_money, target_id, order_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from return_money_change_record
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from return_money_change_record
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.com.jgyhw.sqm.domain.ReturnMoneyChangeRecord">
+    insert into return_money_change_record (id, wx_user_id, change_type,
+      change_time, change_money, target_id,
+      order_id)
+    values (#{id,jdbcType=VARCHAR}, #{wxUserId,jdbcType=BIGINT}, #{changeType,jdbcType=INTEGER},
+      #{changeTime,jdbcType=TIMESTAMP}, #{changeMoney,jdbcType=DOUBLE}, #{targetId,jdbcType=VARCHAR},
+      #{orderId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.com.jgyhw.sqm.domain.ReturnMoneyChangeRecord">
+    insert into return_money_change_record
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="wxUserId != null">
+        wx_user_id,
+      </if>
+      <if test="changeType != null">
+        change_type,
+      </if>
+      <if test="changeTime != null">
+        change_time,
+      </if>
+      <if test="changeMoney != null">
+        change_money,
+      </if>
+      <if test="targetId != null">
+        target_id,
+      </if>
+      <if test="orderId != null">
+        order_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="wxUserId != null">
+        #{wxUserId,jdbcType=BIGINT},
+      </if>
+      <if test="changeType != null">
+        #{changeType,jdbcType=INTEGER},
+      </if>
+      <if test="changeTime != null">
+        #{changeTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="changeMoney != null">
+        #{changeMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="targetId != null">
+        #{targetId,jdbcType=VARCHAR},
+      </if>
+      <if test="orderId != null">
+        #{orderId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.com.jgyhw.sqm.domain.ReturnMoneyChangeRecord">
+    update return_money_change_record
+    <set>
+      <if test="wxUserId != null">
+        wx_user_id = #{wxUserId,jdbcType=BIGINT},
+      </if>
+      <if test="changeType != null">
+        change_type = #{changeType,jdbcType=INTEGER},
+      </if>
+      <if test="changeTime != null">
+        change_time = #{changeTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="changeMoney != null">
+        change_money = #{changeMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="targetId != null">
+        target_id = #{targetId,jdbcType=VARCHAR},
+      </if>
+      <if test="orderId != null">
+        order_id = #{orderId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.com.jgyhw.sqm.domain.ReturnMoneyChangeRecord">
+    update return_money_change_record
+    set wx_user_id = #{wxUserId,jdbcType=BIGINT},
+      change_type = #{changeType,jdbcType=INTEGER},
+      change_time = #{changeTime,jdbcType=TIMESTAMP},
+      change_money = #{changeMoney,jdbcType=DOUBLE},
+      target_id = #{targetId,jdbcType=VARCHAR},
+      order_id = #{orderId,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+
+  <select id="selectReturnMoneyChangeRecordByWxUserIdAndChangeTypeAndTargetIdAndOrderId" resultType="cn.com.jgyhw.sqm.domain.ReturnMoneyChangeRecord">
+    select * from return_money_change_record where wx_user_id = #{wxUserId} and change_type = #{changeType} and target_id = #{targetId} and order_id = #{orderId}
+  </select>
+
+  <select id="selectReturnMoneyChangeRecordListByWxUserIdAndChangeTypePage" resultType="cn.com.jgyhw.sqm.domain.ReturnMoneyChangeRecord">
+    select * from return_money_change_record
+    <where>
+      wx_user_id = #{wxUserId}
+      <if test="changeType != 0">
+        and change_type = #{changeType}
+      </if>
+    </where>
+     order by change_time desc
+  </select>
+</mapper>

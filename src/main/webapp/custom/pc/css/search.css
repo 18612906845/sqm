@@ -1,0 +1,73 @@
+.all-classify{
+    background-color: #f44661;
+}
+.all-classify:hover{
+    background-color: #d2364c;
+}
+.search-classify {
+    background-color: #d2364c;
+}
+
+/*广告图*/
+.advertising {
+    height: 80px;
+    margin: 10px auto;
+}
+.advertising img {
+    height: 80px;
+    width: auto;
+}
+
+/*查询条件*/
+.search-condition {
+    border: 1px solid #eee;
+}
+.platform {
+    height: 49px;
+}
+.search-condition-top {
+    margin-top: 15px;
+}
+.platform-label {
+    margin-left: 5px;
+    margin-right: 20px;
+    font-weight: normal;
+}
+.platform-label:hover {
+    color: rgb(213, 78, 33);
+}
+.goods-classify {
+    border-top: 1px solid #eee;
+}
+.goods-classify-ul {
+    margin: 0px;
+    padding: 0px;
+}
+.goods-classify-ul li {
+    cursor: pointer;
+    display: inline-block;
+    margin-right: 20px;
+    margin-bottom: 15px;
+}
+.goods-classify-ul li:hover {
+    color: rgb(213, 78, 33);
+}
+
+/*排序*/
+.order-title {
+    text-align: right;
+    padding: 0px;
+}
+.order-title-ul {
+    margin: 0px;
+    padding: 0px;
+    height: 50px;
+}
+.order-title-ul li {
+    cursor: pointer;
+    display: inline-block;
+    padding: 15px 20px 0px 0px;
+}
+.order-title-ul li:hover {
+    color: rgb(213, 78, 33);
+}

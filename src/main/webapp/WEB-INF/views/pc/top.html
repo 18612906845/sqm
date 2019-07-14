@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+    <div id="topPage" class="row">
+        <link th:href="@{/custom/pc/css/top.css}" href="../../../custom/pc/css/top.css" rel="stylesheet">
+        <!--顶部欢迎/公告/收藏夹-->
+        <div class="row">
+            <div class="content-width top">
+                <div class="top-left" style="margin: 0;line-height: 33px;">您好，欢迎光临送券喵！</div>
+                <div class="top-centre">
+                    <marquee behavior="scroll" id="notice"></marquee>
+                </div>
+                <ul class="top-right" style="line-height: 25px;">
+                    <li style=" margin-right: 8px;">
+                        <a class="set_home" href="javascript:void(0)" style="color: #757575" title="将本站设为首页">设为首页</a>
+                    </li>
+                    <li style="margin-right: 8px;">
+                        <a class="add_favorite" href="javascript:void(0)" style="color: #757575" title="加入收藏，方便下次打开">加入收藏</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!--LOG/搜索-->
+        <div class="row">
+            <div class="content-width nav-top">
+                <div class="row">
+                    <div class="col-xs-3 web-log">
+                        <img src="../../../images/pc/icon/web-log.png"/>
+                    </div>
+                    <div class="col-xs-6 search-div">
+                        <input id="keyword" class="search-text" type="text" placeholder="请输入商品关键词 | 商品编号 | 商品连接查询" autocomplete="off">
+                        <i id="clearKeyword" class="layui-icon layui-icon-close-fill search-clear" style="display: none;"></i>
+                        <input id="searchBut" class="search-btn" value="搜索" index="1" type="submit">
+                    </div>
+                    <div class="col-xs-3" style="text-align: right;padding: 0px;">
+                        <img src="../../../images/pc/gzh-min.jpg" qrCodeType="gzh" class="qrCodeImage">
+                        <img src="../../../images/pc/xcx-min.jpg" qrCodeType="xcx" class="qrCodeImage" style="margin-left: 10px;">
+                        <img id="magnifyGzhQrCode" src="../../../images/pc/gzh-max.jpg" class="qrCode-magnify" style="display:none;">
+                        <img id="magnifyXcxQrCode" src="../../../images/pc/xcx-max.jpg" class="qrCode-magnify" style="display:none;">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--导航条-->
+        <div class="row nav-menu"></div>
+    </div>
+</html>

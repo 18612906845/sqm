@@ -1,0 +1,25 @@
+/*分页样式*/
+.pagination {
+    border-radius: 0px;
+}
+.pagination>li>a {
+    color: #f44661;
+    cursor: pointer;
+}
+.pagination>li>a:hover {
+    color: #999999;
+}
+.pagination>.active>a {
+    background-color: #f44661;
+    border-color: #f44661;
+}
+.pagination>.active>a:hover {
+    background-color: #f44661;
+    border-color: #f44661;
+}
+.pagination-lg>li:first-child>a {
+    border-radius: 0px;
+}
+.pagination>li:last-child>a {
+    border-radius: 0px;
+}

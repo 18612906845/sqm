@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=8,IE=Edge,chrome=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>微信用户列表</title>
+</head>
+<div th:replace="base/import-common.html :: #importPage-xtgl"></div>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+    <!--页头-->
+    <div th:replace="xtgl/top.html :: #topPage"></div>
+
+    <!--左侧菜单-->
+    <div th:replace="xtgl/menu.html :: #menuPage"></div>
+
+    <!--内容主体区域-->
+    <div class="layui-body" style="margin: 10px;">
+        <form class="layui-form">
+            <div class="layui-col-md2">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">用户标识：</label>
+                    <div class="layui-input-block">
+                        <input id="id" type="text" name="id" placeholder="请输入用户标识" lay-verify="number" autocomplete="off" class="layui-input" value="0">
+                    </div>
+                </div>
+            </div>
+            <div class="layui-col-md2">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">用户昵称：</label>
+                    <div class="layui-input-block">
+                        <input id="nickName" type="text" name="nickName" placeholder="请输入用户昵称" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+            </div>
+            <div class="layui-col-md2">
+                <label class="layui-form-label">排序字段：</label>
+                <div class="layui-input-block">
+                    <select id="orderField">
+                        <option value="create_time">创建时间</option>
+                        <option value="update_time">更新时间</option>
+                        <option value="remaining_money">可提余额</option>
+                        <option value="withdraw_cash_sum">累计提现</option>
+                    </select>
+                </div>
+            </div>
+            <div class="layui-col-md2">
+                <button class="layui-btn" lay-submit lay-filter="search" style="margin-left: 20px;">查询</button>
+                <button id="reset" type="reset" class="layui-btn layui-btn-primary">重置</button>
+            </div>
+            <div class="layui-col-md4" style="text-align: right">
+                <h1>等待支付（合计）：<span id="awaitPaySum">0.00</span>元</h1>
+            </div>
+        </form>
+
+        <table id="wxUserListTable" class="layui-table" lay-filter="wxUserListTable">
+
+        </table>
+    </div>
+    <!--页脚-->
+    <div th:replace="xtgl/footer.html :: #footerPage"></div>
+</div>
+<div th:replace="base/import-common.html :: commonJs-pc"></div>
+<script th:src="@{/scripts/xtgl/wxUserList.js(v='2019051601')}"></script>
+</body>
+</html>

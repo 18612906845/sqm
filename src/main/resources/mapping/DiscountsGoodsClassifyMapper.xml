@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.com.jgyhw.sqm.mapper.DiscountsGoodsClassifyMapper">
+  <resultMap id="BaseResultMap" type="cn.com.jgyhw.sqm.domain.DiscountsGoodsClassify">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="classify_name" jdbcType="VARCHAR" property="classifyName" />
+    <result column="classify_id" jdbcType="VARCHAR" property="classifyId" />
+    <result column="platform" jdbcType="INTEGER" property="platform" />
+    <result column="order_num" jdbcType="INTEGER" property="orderNum" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, classify_name, classify_id, platform, order_num, create_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from discounts_goods_classify
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from discounts_goods_classify
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.com.jgyhw.sqm.domain.DiscountsGoodsClassify">
+    insert into discounts_goods_classify (id, classify_name, classify_id, 
+      platform, order_num, create_time, 
+      update_time)
+    values (#{id,jdbcType=VARCHAR}, #{classifyName,jdbcType=VARCHAR}, #{classifyId,jdbcType=VARCHAR}, 
+      #{platform,jdbcType=INTEGER}, #{orderNum,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.com.jgyhw.sqm.domain.DiscountsGoodsClassify">
+    insert into discounts_goods_classify
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="classifyName != null">
+        classify_name,
+      </if>
+      <if test="classifyId != null">
+        classify_id,
+      </if>
+      <if test="platform != null">
+        platform,
+      </if>
+      <if test="orderNum != null">
+        order_num,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="classifyName != null">
+        #{classifyName,jdbcType=VARCHAR},
+      </if>
+      <if test="classifyId != null">
+        #{classifyId,jdbcType=VARCHAR},
+      </if>
+      <if test="platform != null">
+        #{platform,jdbcType=INTEGER},
+      </if>
+      <if test="orderNum != null">
+        #{orderNum,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.com.jgyhw.sqm.domain.DiscountsGoodsClassify">
+    update discounts_goods_classify
+    <set>
+      <if test="classifyName != null">
+        classify_name = #{classifyName,jdbcType=VARCHAR},
+      </if>
+      <if test="classifyId != null">
+        classify_id = #{classifyId,jdbcType=VARCHAR},
+      </if>
+      <if test="platform != null">
+        platform = #{platform,jdbcType=INTEGER},
+      </if>
+      <if test="orderNum != null">
+        order_num = #{orderNum,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.com.jgyhw.sqm.domain.DiscountsGoodsClassify">
+    update discounts_goods_classify
+    set classify_name = #{classifyName,jdbcType=VARCHAR},
+      classify_id = #{classifyId,jdbcType=VARCHAR},
+      platform = #{platform,jdbcType=INTEGER},
+      order_num = #{orderNum,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+
+  <select id="selectDiscountsGoodsClassifyListByPlatform" parameterType="Integer" resultType="cn.com.jgyhw.sqm.domain.DiscountsGoodsClassify">
+    select * from discounts_goods_classify
+    <where>
+      <choose>
+        <when test="platform != null and platform != 0">
+          and platform = #{platform} order by order_num
+        </when>
+        <otherwise>
+          order by update_time desc
+        </otherwise>
+      </choose>
+    </where>
+  </select>
+</mapper>

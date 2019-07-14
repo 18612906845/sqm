@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=8,IE=Edge,chrome=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>提现申请记录</title>
+</head>
+<div th:replace="base/import-common.html :: #importPage-xtgl"></div>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+    <!--页头-->
+    <div th:replace="xtgl/top.html :: #topPage"></div>
+
+    <!--左侧菜单-->
+    <div th:replace="xtgl/menu.html :: #menuPage"></div>
+
+    <!--内容主体区域-->
+    <div class="layui-body" style="margin: 10px;">
+        <form class="layui-form">
+            <div class="layui-col-md3">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">用户标识：</label>
+                    <div class="layui-input-block">
+                        <input id="wxUserId" type="text" name="wxUserId" placeholder="请输入用户标识" lay-verify="number" autocomplete="off" class="layui-input" value="0">
+                    </div>
+                </div>
+            </div>
+            <div class="layui-col-md3">
+                <label class="layui-form-label">支付状态：</label>
+                <div class="layui-input-block">
+                    <select id="status">
+                        <option value="0">全部</option>
+                        <option value="1">未支付</option>
+                        <option value="2">已支付</option>
+                        <option value="3">支付失败</option>
+                    </select>
+                </div>
+            </div>
+            <div class="layui-col-md3">
+                <button class="layui-btn" lay-submit lay-filter="search" style="margin-left: 20px;">查询</button>
+                <button id="reset" type="reset" class="layui-btn layui-btn-primary">重置</button>
+            </div>
+            <div class="layui-col-md3" style="text-align: right">
+                <h1>累计支付：<span id="withdrawCashSum">0.00</span>元</h1>
+            </div>
+        </form>
+        <table id="withdrawCashRecordTable" class="layui-table" lay-filter="withdrawCashRecordTable">
+
+        </table>
+    </div>
+    <!--页脚-->
+    <div th:replace="xtgl/footer.html :: #footerPage"></div>
+</div>
+<div th:replace="base/import-common.html :: commonJs-pc"></div>
+<script th:src="@{/scripts/xtgl/withdrawCashRecordList.js(v='2019041401')}"></script>
+</body>
+</html>

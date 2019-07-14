@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.com.jgyhw.sqm.mapper.WxUserMapper">
+  <resultMap id="BaseResultMap" type="cn.com.jgyhw.sqm.domain.WxUser">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="union_id" jdbcType="VARCHAR" property="unionId" />
+    <result column="open_id_gzh" jdbcType="VARCHAR" property="openIdGzh" />
+    <result column="open_id_xcx" jdbcType="VARCHAR" property="openIdXcx" />
+    <result column="open_id_pc" jdbcType="VARCHAR" property="openIdPc" />
+    <result column="session_key_xcx" jdbcType="VARCHAR" property="sessionKeyXcx" />
+    <result column="parent_wx_user_id" jdbcType="BIGINT" property="parentWxUserId" />
+    <result column="nick_name" jdbcType="VARCHAR" property="nickName" />
+    <result column="sex" jdbcType="INTEGER" property="sex" />
+    <result column="province" jdbcType="VARCHAR" property="province" />
+    <result column="city" jdbcType="VARCHAR" property="city" />
+    <result column="country" jdbcType="VARCHAR" property="country" />
+    <result column="head_img_url" jdbcType="VARCHAR" property="headImgUrl" />
+    <result column="remaining_money" jdbcType="DOUBLE" property="remainingMoney" />
+    <result column="withdraw_cash_sum" jdbcType="DOUBLE" property="withdrawCashSum" />
+    <result column="return_money_share_wq" jdbcType="INTEGER" property="returnMoneyShareWq" />
+    <result column="return_money_share_yq" jdbcType="INTEGER" property="returnMoneyShareYq" />
+    <result column="return_money_share_tc" jdbcType="INTEGER" property="returnMoneyShareTc" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, union_id, open_id_gzh, open_id_xcx, open_id_pc, session_key_xcx, parent_wx_user_id,
+    nick_name, sex, province, city, country, head_img_url, remaining_money, withdraw_cash_sum,
+    return_money_share_wq, return_money_share_yq, return_money_share_tc, create_time,
+    update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from wx_user
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from wx_user
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="cn.com.jgyhw.sqm.domain.WxUser" useGeneratedKeys="true" keyProperty="id">
+    insert into wx_user (id, union_id, open_id_gzh,
+      open_id_xcx, open_id_pc, session_key_xcx,
+      parent_wx_user_id, nick_name, sex,
+      province, city, country,
+      head_img_url, remaining_money, withdraw_cash_sum,
+      return_money_share_wq, return_money_share_yq,
+      return_money_share_tc, create_time, update_time
+      )
+    values (#{id,jdbcType=BIGINT}, #{unionId,jdbcType=VARCHAR}, #{openIdGzh,jdbcType=VARCHAR},
+      #{openIdXcx,jdbcType=VARCHAR}, #{openIdPc,jdbcType=VARCHAR}, #{sessionKeyXcx,jdbcType=VARCHAR},
+      #{parentWxUserId,jdbcType=BIGINT}, #{nickName,jdbcType=VARCHAR}, #{sex,jdbcType=INTEGER},
+      #{province,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}, #{country,jdbcType=VARCHAR},
+      #{headImgUrl,jdbcType=VARCHAR}, #{remainingMoney,jdbcType=DOUBLE}, #{withdrawCashSum,jdbcType=DOUBLE},
+      #{returnMoneyShareWq,jdbcType=INTEGER}, #{returnMoneyShareYq,jdbcType=INTEGER},
+      #{returnMoneyShareTc,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.com.jgyhw.sqm.domain.WxUser">
+    insert into wx_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="unionId != null">
+        union_id,
+      </if>
+      <if test="openIdGzh != null">
+        open_id_gzh,
+      </if>
+      <if test="openIdXcx != null">
+        open_id_xcx,
+      </if>
+      <if test="openIdPc != null">
+        open_id_pc,
+      </if>
+      <if test="sessionKeyXcx != null">
+        session_key_xcx,
+      </if>
+      <if test="parentWxUserId != null">
+        parent_wx_user_id,
+      </if>
+      <if test="nickName != null">
+        nick_name,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="province != null">
+        province,
+      </if>
+      <if test="city != null">
+        city,
+      </if>
+      <if test="country != null">
+        country,
+      </if>
+      <if test="headImgUrl != null">
+        head_img_url,
+      </if>
+      <if test="remainingMoney != null">
+        remaining_money,
+      </if>
+      <if test="withdrawCashSum != null">
+        withdraw_cash_sum,
+      </if>
+      <if test="returnMoneyShareWq != null">
+        return_money_share_wq,
+      </if>
+      <if test="returnMoneyShareYq != null">
+        return_money_share_yq,
+      </if>
+      <if test="returnMoneyShareTc != null">
+        return_money_share_tc,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="unionId != null">
+        #{unionId,jdbcType=VARCHAR},
+      </if>
+      <if test="openIdGzh != null">
+        #{openIdGzh,jdbcType=VARCHAR},
+      </if>
+      <if test="openIdXcx != null">
+        #{openIdXcx,jdbcType=VARCHAR},
+      </if>
+      <if test="openIdPc != null">
+        #{openIdPc,jdbcType=VARCHAR},
+      </if>
+      <if test="sessionKeyXcx != null">
+        #{sessionKeyXcx,jdbcType=VARCHAR},
+      </if>
+      <if test="parentWxUserId != null">
+        #{parentWxUserId,jdbcType=BIGINT},
+      </if>
+      <if test="nickName != null">
+        #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="province != null">
+        #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="country != null">
+        #{country,jdbcType=VARCHAR},
+      </if>
+      <if test="headImgUrl != null">
+        #{headImgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="remainingMoney != null">
+        #{remainingMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="withdrawCashSum != null">
+        #{withdrawCashSum,jdbcType=DOUBLE},
+      </if>
+      <if test="returnMoneyShareWq != null">
+        #{returnMoneyShareWq,jdbcType=INTEGER},
+      </if>
+      <if test="returnMoneyShareYq != null">
+        #{returnMoneyShareYq,jdbcType=INTEGER},
+      </if>
+      <if test="returnMoneyShareTc != null">
+        #{returnMoneyShareTc,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.com.jgyhw.sqm.domain.WxUser">
+    update wx_user
+    <set>
+      <if test="unionId != null">
+        union_id = #{unionId,jdbcType=VARCHAR},
+      </if>
+      <if test="openIdGzh != null">
+        open_id_gzh = #{openIdGzh,jdbcType=VARCHAR},
+      </if>
+      <if test="openIdXcx != null">
+        open_id_xcx = #{openIdXcx,jdbcType=VARCHAR},
+      </if>
+      <if test="openIdPc != null">
+        open_id_pc = #{openIdPc,jdbcType=VARCHAR},
+      </if>
+      <if test="sessionKeyXcx != null">
+        session_key_xcx = #{sessionKeyXcx,jdbcType=VARCHAR},
+      </if>
+      <if test="parentWxUserId != null">
+        parent_wx_user_id = #{parentWxUserId,jdbcType=BIGINT},
+      </if>
+      <if test="nickName != null">
+        nick_name = #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="province != null">
+        province = #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        city = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="country != null">
+        country = #{country,jdbcType=VARCHAR},
+      </if>
+      <if test="headImgUrl != null">
+        head_img_url = #{headImgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="remainingMoney != null">
+        remaining_money = #{remainingMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="withdrawCashSum != null">
+        withdraw_cash_sum = #{withdrawCashSum,jdbcType=DOUBLE},
+      </if>
+      <if test="returnMoneyShareWq != null">
+        return_money_share_wq = #{returnMoneyShareWq,jdbcType=INTEGER},
+      </if>
+      <if test="returnMoneyShareYq != null">
+        return_money_share_yq = #{returnMoneyShareYq,jdbcType=INTEGER},
+      </if>
+      <if test="returnMoneyShareTc != null">
+        return_money_share_tc = #{returnMoneyShareTc,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.com.jgyhw.sqm.domain.WxUser">
+    update wx_user
+    set union_id = #{unionId,jdbcType=VARCHAR},
+      open_id_gzh = #{openIdGzh,jdbcType=VARCHAR},
+      open_id_xcx = #{openIdXcx,jdbcType=VARCHAR},
+      open_id_pc = #{openIdPc,jdbcType=VARCHAR},
+      session_key_xcx = #{sessionKeyXcx,jdbcType=VARCHAR},
+      parent_wx_user_id = #{parentWxUserId,jdbcType=BIGINT},
+      nick_name = #{nickName,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=INTEGER},
+      province = #{province,jdbcType=VARCHAR},
+      city = #{city,jdbcType=VARCHAR},
+      country = #{country,jdbcType=VARCHAR},
+      head_img_url = #{headImgUrl,jdbcType=VARCHAR},
+      remaining_money = #{remainingMoney,jdbcType=DOUBLE},
+      withdraw_cash_sum = #{withdrawCashSum,jdbcType=DOUBLE},
+      return_money_share_wq = #{returnMoneyShareWq,jdbcType=INTEGER},
+      return_money_share_yq = #{returnMoneyShareYq,jdbcType=INTEGER},
+      return_money_share_tc = #{returnMoneyShareTc,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+  <select id="selectWxUserByUnionId" parameterType="String" resultType="cn.com.jgyhw.sqm.domain.WxUser">
+    select * from wx_user where union_id = #{unionId}
+  </select>
+
+  <select id="selectWxUserByOpenIdGzh" parameterType="String" resultType="cn.com.jgyhw.sqm.domain.WxUser">
+    select * from wx_user where open_id_gzh = #{openIdGzh}
+  </select>
+
+  <select id="selectWxUserSumByParentWxUserId" parameterType="Long" resultType="int">
+    select count(id) from wx_user where parent_wx_user_id = #{parentWxUserId}
+  </select>
+
+  <select id="selectWxUserListByParentWxUserIdPage" parameterType="Long" resultType="cn.com.jgyhw.sqm.domain.WxUser">
+    select * from wx_user where parent_wx_user_id = #{parentWxUserId} order by create_time desc
+  </select>
+
+  <select id="selectWxUserListByConditionPage" resultType="cn.com.jgyhw.sqm.domain.WxUser">
+    SELECT * FROM wx_user
+    <where>
+      <if test="id != 0">
+        AND id = #{id}
+      </if>
+      <if test="nickName != null and nickName != ''">
+        AND nick_name LIKE concat(concat('%', #{nickName}), '%')
+      </if>
+    </where>
+    ORDER BY ${orderField} DESC
+  </select>
+
+  <select id="selectRemainingMoneySum" resultType="Double">
+    select sum(remaining_money) from wx_user where remaining_money > 0
+  </select>
+
+  <select id="selectWithdrawCashSum" resultType="Double">
+    select sum(withdraw_cash_sum) from wx_user where withdraw_cash_sum > 0
+  </select>
+</mapper>

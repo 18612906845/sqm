@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.com.jgyhw.sqm.mapper.WithdrawCashRecordMapper">
+  <resultMap id="BaseResultMap" type="cn.com.jgyhw.sqm.domain.WithdrawCashRecord">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="wx_user_id" jdbcType="BIGINT" property="wxUserId" />
+    <result column="apply_time" jdbcType="TIMESTAMP" property="applyTime" />
+    <result column="apply_money" jdbcType="DOUBLE" property="applyMoney" />
+    <result column="pay_status" jdbcType="INTEGER" property="payStatus" />
+    <result column="pay_time" jdbcType="TIMESTAMP" property="payTime" />
+    <result column="partner_trade_no" jdbcType="VARCHAR" property="partnerTradeNo" />
+    <result column="payment_no" jdbcType="VARCHAR" property="paymentNo" />
+    <result column="err_code" jdbcType="VARCHAR" property="errCode" />
+    <result column="err_code_des" jdbcType="VARCHAR" property="errCodeDes" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, wx_user_id, apply_time, apply_money, pay_status, pay_time, partner_trade_no,
+    payment_no, err_code, err_code_des
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from withdraw_cash_record
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from withdraw_cash_record
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.com.jgyhw.sqm.domain.WithdrawCashRecord">
+    insert into withdraw_cash_record (id, wx_user_id, apply_time,
+      apply_money, pay_status, pay_time,
+      partner_trade_no, payment_no, err_code,
+      err_code_des)
+    values (#{id,jdbcType=VARCHAR}, #{wxUserId,jdbcType=BIGINT}, #{applyTime,jdbcType=TIMESTAMP},
+      #{applyMoney,jdbcType=DOUBLE}, #{payStatus,jdbcType=INTEGER}, #{payTime,jdbcType=TIMESTAMP},
+      #{partnerTradeNo,jdbcType=VARCHAR}, #{paymentNo,jdbcType=VARCHAR}, #{errCode,jdbcType=VARCHAR},
+      #{errCodeDes,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.com.jgyhw.sqm.domain.WithdrawCashRecord">
+    insert into withdraw_cash_record
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="wxUserId != null">
+        wx_user_id,
+      </if>
+      <if test="applyTime != null">
+        apply_time,
+      </if>
+      <if test="applyMoney != null">
+        apply_money,
+      </if>
+      <if test="payStatus != null">
+        pay_status,
+      </if>
+      <if test="payTime != null">
+        pay_time,
+      </if>
+      <if test="partnerTradeNo != null">
+        partner_trade_no,
+      </if>
+      <if test="paymentNo != null">
+        payment_no,
+      </if>
+      <if test="errCode != null">
+        err_code,
+      </if>
+      <if test="errCodeDes != null">
+        err_code_des,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="wxUserId != null">
+        #{wxUserId,jdbcType=BIGINT},
+      </if>
+      <if test="applyTime != null">
+        #{applyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="applyMoney != null">
+        #{applyMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="payStatus != null">
+        #{payStatus,jdbcType=INTEGER},
+      </if>
+      <if test="payTime != null">
+        #{payTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="partnerTradeNo != null">
+        #{partnerTradeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="paymentNo != null">
+        #{paymentNo,jdbcType=VARCHAR},
+      </if>
+      <if test="errCode != null">
+        #{errCode,jdbcType=VARCHAR},
+      </if>
+      <if test="errCodeDes != null">
+        #{errCodeDes,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.com.jgyhw.sqm.domain.WithdrawCashRecord">
+    update withdraw_cash_record
+    <set>
+      <if test="wxUserId != null">
+        wx_user_id = #{wxUserId,jdbcType=BIGINT},
+      </if>
+      <if test="applyTime != null">
+        apply_time = #{applyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="applyMoney != null">
+        apply_money = #{applyMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="payStatus != null">
+        pay_status = #{payStatus,jdbcType=INTEGER},
+      </if>
+      <if test="payTime != null">
+        pay_time = #{payTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="partnerTradeNo != null">
+        partner_trade_no = #{partnerTradeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="paymentNo != null">
+        payment_no = #{paymentNo,jdbcType=VARCHAR},
+      </if>
+      <if test="errCode != null">
+        err_code = #{errCode,jdbcType=VARCHAR},
+      </if>
+      <if test="errCodeDes != null">
+        err_code_des = #{errCodeDes,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.com.jgyhw.sqm.domain.WithdrawCashRecord">
+    update withdraw_cash_record
+    set wx_user_id = #{wxUserId,jdbcType=BIGINT},
+      apply_time = #{applyTime,jdbcType=TIMESTAMP},
+      apply_money = #{applyMoney,jdbcType=DOUBLE},
+      pay_status = #{payStatus,jdbcType=INTEGER},
+      pay_time = #{payTime,jdbcType=TIMESTAMP},
+      partner_trade_no = #{partnerTradeNo,jdbcType=VARCHAR},
+      payment_no = #{paymentNo,jdbcType=VARCHAR},
+      err_code = #{errCode,jdbcType=VARCHAR},
+      err_code_des = #{errCodeDes,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+
+  <select id="selectWithdrawCashRecordAllByConditionPage" resultType="cn.com.jgyhw.sqm.domain.WithdrawCashRecord">
+    SELECT wcr.*, wu.nick_name, wu.head_img_url FROM withdraw_cash_record as wcr , wx_user as wu WHERE wcr.wx_user_id = wu.id
+    <if test="wxUserId != 0">
+      and wx_user_id = #{wxUserId}
+    </if>
+    <if test="status != 0">
+      and pay_status = #{status}
+    </if>
+    ORDER BY apply_time DESC
+  </select>
+</mapper>

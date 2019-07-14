@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.com.jgyhw.sqm.mapper.OrderGoodsMapper">
+  <resultMap id="BaseResultMap" type="cn.com.jgyhw.sqm.domain.OrderGoods">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="code" jdbcType="VARCHAR" property="code" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="image_url" jdbcType="VARCHAR" property="imageUrl" />
+    <result column="order_record_id" jdbcType="VARCHAR" property="orderRecordId" />
+    <result column="return_scale" jdbcType="INTEGER" property="returnScale" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, code, name, image_url, order_record_id, return_scale, create_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from order_goods
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from order_goods
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.com.jgyhw.sqm.domain.OrderGoods">
+    insert into order_goods (id, code, name,
+      image_url, order_record_id, return_scale,
+      create_time)
+    values (#{id,jdbcType=VARCHAR}, #{code,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR},
+      #{imageUrl,jdbcType=VARCHAR}, #{orderRecordId,jdbcType=VARCHAR}, #{returnScale,jdbcType=INTEGER},
+      #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.com.jgyhw.sqm.domain.OrderGoods">
+    insert into order_goods
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="code != null">
+        code,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="imageUrl != null">
+        image_url,
+      </if>
+      <if test="orderRecordId != null">
+        order_record_id,
+      </if>
+      <if test="returnScale != null">
+        return_scale,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null">
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="imageUrl != null">
+        #{imageUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="orderRecordId != null">
+        #{orderRecordId,jdbcType=VARCHAR},
+      </if>
+      <if test="returnScale != null">
+        #{returnScale,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.com.jgyhw.sqm.domain.OrderGoods">
+    update order_goods
+    <set>
+      <if test="code != null">
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="imageUrl != null">
+        image_url = #{imageUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="orderRecordId != null">
+        order_record_id = #{orderRecordId,jdbcType=VARCHAR},
+      </if>
+      <if test="returnScale != null">
+        return_scale = #{returnScale,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.com.jgyhw.sqm.domain.OrderGoods">
+    update order_goods
+    set code = #{code,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      image_url = #{imageUrl,jdbcType=VARCHAR},
+      order_record_id = #{orderRecordId,jdbcType=VARCHAR},
+      return_scale = #{returnScale,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+
+  <select id="selectOrderGoodsListByOrderRecordId" parameterType="String" resultType="cn.com.jgyhw.sqm.domain.OrderGoods">
+    select * from order_goods where order_record_id = #{orderRecordId} order by create_time
+  </select>
+
+  <select id="selectOrderGoodsByOrderRecordIdAndCode" resultType="cn.com.jgyhw.sqm.domain.OrderGoods">
+    select * from order_goods where order_record_id = #{orderRecordId} and code = #{code}
+  </select>
+</mapper>

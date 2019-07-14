@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.com.jgyhw.sqm.mapper.JdGoodsDiscountsMapper">
+  <resultMap id="BaseResultMap" type="cn.com.jgyhw.sqm.domain.JdGoodsDiscounts">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="goods_id" jdbcType="BIGINT" property="goodsId" />
+    <result column="goods_name" jdbcType="VARCHAR" property="goodsName" />
+    <result column="goods_img_url" jdbcType="VARCHAR" property="goodsImgUrl" />
+    <result column="material_url" jdbcType="VARCHAR" property="materialUrl" />
+    <result column="owner" jdbcType="VARCHAR" property="owner" />
+    <result column="sales_volume" jdbcType="BIGINT" property="salesVolume" />
+    <result column="price" jdbcType="DOUBLE" property="price" />
+    <result column="commission" jdbcType="DOUBLE" property="commission" />
+    <result column="commission_rate" jdbcType="DOUBLE" property="commissionRate" />
+    <result column="return_money" jdbcType="DOUBLE" property="returnMoney" />
+    <result column="discount" jdbcType="DOUBLE" property="discount" />
+    <result column="link" jdbcType="VARCHAR" property="link" />
+    <result column="discount_quota" jdbcType="DOUBLE" property="discountQuota" />
+    <result column="pin_gou_price" jdbcType="DOUBLE" property="pinGouPrice" />
+    <result column="lowest_price" jdbcType="DOUBLE" property="lowestPrice" />
+    <result column="lowest_price_name" jdbcType="VARCHAR" property="lowestPriceName" />
+    <result column="goods_classify" jdbcType="VARCHAR" property="goodsClassify" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, goods_id, goods_name, goods_img_url, material_url, owner, sales_volume, price,
+    commission, commission_rate, return_money, discount, link, discount_quota, pin_gou_price,
+    lowest_price, lowest_price_name, goods_classify, update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from jd_goods_discounts
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from jd_goods_discounts
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.com.jgyhw.sqm.domain.JdGoodsDiscounts">
+    insert into jd_goods_discounts (id, goods_id, goods_name,
+      goods_img_url, material_url, owner,
+      sales_volume, price, commission,
+      commission_rate, return_money, discount,
+      link, discount_quota, pin_gou_price,
+      lowest_price, lowest_price_name, goods_classify,
+      update_time)
+    values (#{id,jdbcType=VARCHAR}, #{goodsId,jdbcType=BIGINT}, #{goodsName,jdbcType=VARCHAR},
+      #{goodsImgUrl,jdbcType=VARCHAR}, #{materialUrl,jdbcType=VARCHAR}, #{owner,jdbcType=VARCHAR},
+      #{salesVolume,jdbcType=BIGINT}, #{price,jdbcType=DOUBLE}, #{commission,jdbcType=DOUBLE},
+      #{commissionRate,jdbcType=DOUBLE}, #{returnMoney,jdbcType=DOUBLE}, #{discount,jdbcType=DOUBLE},
+      #{link,jdbcType=VARCHAR}, #{discountQuota,jdbcType=DOUBLE}, #{pinGouPrice,jdbcType=DOUBLE},
+      #{lowestPrice,jdbcType=DOUBLE}, #{lowestPriceName,jdbcType=VARCHAR}, #{goodsClassify,jdbcType=VARCHAR},
+      #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.com.jgyhw.sqm.domain.JdGoodsDiscounts">
+    insert into jd_goods_discounts
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="goodsId != null">
+        goods_id,
+      </if>
+      <if test="goodsName != null">
+        goods_name,
+      </if>
+      <if test="goodsImgUrl != null">
+        goods_img_url,
+      </if>
+      <if test="materialUrl != null">
+        material_url,
+      </if>
+      <if test="owner != null">
+        owner,
+      </if>
+      <if test="salesVolume != null">
+        sales_volume,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+      <if test="commission != null">
+        commission,
+      </if>
+      <if test="commissionRate != null">
+        commission_rate,
+      </if>
+      <if test="returnMoney != null">
+        return_money,
+      </if>
+      <if test="discount != null">
+        discount,
+      </if>
+      <if test="link != null">
+        link,
+      </if>
+      <if test="discountQuota != null">
+        discount_quota,
+      </if>
+      <if test="pinGouPrice != null">
+        pin_gou_price,
+      </if>
+      <if test="lowestPrice != null">
+        lowest_price,
+      </if>
+      <if test="lowestPriceName != null">
+        lowest_price_name,
+      </if>
+      <if test="goodsClassify != null">
+        goods_classify,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsId != null">
+        #{goodsId,jdbcType=BIGINT},
+      </if>
+      <if test="goodsName != null">
+        #{goodsName,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsImgUrl != null">
+        #{goodsImgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="materialUrl != null">
+        #{materialUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="owner != null">
+        #{owner,jdbcType=VARCHAR},
+      </if>
+      <if test="salesVolume != null">
+        #{salesVolume,jdbcType=BIGINT},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=DOUBLE},
+      </if>
+      <if test="commission != null">
+        #{commission,jdbcType=DOUBLE},
+      </if>
+      <if test="commissionRate != null">
+        #{commissionRate,jdbcType=DOUBLE},
+      </if>
+      <if test="returnMoney != null">
+        #{returnMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="discount != null">
+        #{discount,jdbcType=DOUBLE},
+      </if>
+      <if test="link != null">
+        #{link,jdbcType=VARCHAR},
+      </if>
+      <if test="discountQuota != null">
+        #{discountQuota,jdbcType=DOUBLE},
+      </if>
+      <if test="pinGouPrice != null">
+        #{pinGouPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="lowestPrice != null">
+        #{lowestPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="lowestPriceName != null">
+        #{lowestPriceName,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsClassify != null">
+        #{goodsClassify,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.com.jgyhw.sqm.domain.JdGoodsDiscounts">
+    update jd_goods_discounts
+    <set>
+      <if test="goodsId != null">
+        goods_id = #{goodsId,jdbcType=BIGINT},
+      </if>
+      <if test="goodsName != null">
+        goods_name = #{goodsName,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsImgUrl != null">
+        goods_img_url = #{goodsImgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="materialUrl != null">
+        material_url = #{materialUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="owner != null">
+        owner = #{owner,jdbcType=VARCHAR},
+      </if>
+      <if test="salesVolume != null">
+        sales_volume = #{salesVolume,jdbcType=BIGINT},
+      </if>
+      <if test="price != null">
+        price = #{price,jdbcType=DOUBLE},
+      </if>
+      <if test="commission != null">
+        commission = #{commission,jdbcType=DOUBLE},
+      </if>
+      <if test="commissionRate != null">
+        commission_rate = #{commissionRate,jdbcType=DOUBLE},
+      </if>
+      <if test="returnMoney != null">
+        return_money = #{returnMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="discount != null">
+        discount = #{discount,jdbcType=DOUBLE},
+      </if>
+      <if test="link != null">
+        link = #{link,jdbcType=VARCHAR},
+      </if>
+      <if test="discountQuota != null">
+        discount_quota = #{discountQuota,jdbcType=DOUBLE},
+      </if>
+      <if test="pinGouPrice != null">
+        pin_gou_price = #{pinGouPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="lowestPrice != null">
+        lowest_price = #{lowestPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="lowestPriceName != null">
+        lowest_price_name = #{lowestPriceName,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsClassify != null">
+        goods_classify = #{goodsClassify,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.com.jgyhw.sqm.domain.JdGoodsDiscounts">
+    update jd_goods_discounts
+    set goods_id = #{goodsId,jdbcType=BIGINT},
+      goods_name = #{goodsName,jdbcType=VARCHAR},
+      goods_img_url = #{goodsImgUrl,jdbcType=VARCHAR},
+      material_url = #{materialUrl,jdbcType=VARCHAR},
+      owner = #{owner,jdbcType=VARCHAR},
+      sales_volume = #{salesVolume,jdbcType=BIGINT},
+      price = #{price,jdbcType=DOUBLE},
+      commission = #{commission,jdbcType=DOUBLE},
+      commission_rate = #{commissionRate,jdbcType=DOUBLE},
+      return_money = #{returnMoney,jdbcType=DOUBLE},
+      discount = #{discount,jdbcType=DOUBLE},
+      link = #{link,jdbcType=VARCHAR},
+      discount_quota = #{discountQuota,jdbcType=DOUBLE},
+      pin_gou_price = #{pinGouPrice,jdbcType=DOUBLE},
+      lowest_price = #{lowestPrice,jdbcType=DOUBLE},
+      lowest_price_name = #{lowestPriceName,jdbcType=VARCHAR},
+      goods_classify = #{goodsClassify,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+
+  <select id="selectJdGoodsDiscountsByGoodsId" parameterType="Long" resultType="cn.com.jgyhw.sqm.domain.JdGoodsDiscounts">
+    select * from jd_goods_discounts where goods_id = #{goodsId}
+  </select>
+
+  <select id="selectJdGoodsDiscountsByGoodsClassifyPage" parameterType="String" resultType="cn.com.jgyhw.sqm.domain.JdGoodsDiscounts">
+    select * from jd_goods_discounts
+    <where>
+      <if test="goodsClassify != '0'">
+        and goods_classify = #{goodsClassify}
+      </if>
+    </where>
+    order by update_time asc
+  </select>
+
+  <delete id="deleteJdGoodsDiscountsByGoodsClassifyAndUpdateTime">
+    delete from jd_goods_discounts
+    <where>
+      goods_classify = #{goodsClassify}
+      <if test="updateTime != null and updateTime != ''">
+        and update_time &lt; #{updateTime}
+      </if>
+    </where>
+  </delete>
+</mapper>

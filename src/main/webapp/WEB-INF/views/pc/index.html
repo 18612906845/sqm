@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>送券喵-欢迎您-主页</title>
+</head>
+<div th:replace="base/import-common.html :: #importPage-pc"></div>
+<link th:href="@{/custom/pc/css/index.css}" href="../../../custom/pc/css/index.css" rel="stylesheet">
+<style>
+    .pagination>.active>a{
+        z-index: 0;
+    }
+</style>
+<body>
+<!--top-->
+<div th:replace="pc/top.html :: #topPage"></div>
+
+<!--分类/轮播图-->
+<div class="row" style="height: 450px;">
+    <div class="content-width banner">
+        <div class="row banner-carousel">
+            <div id="myCarousel" class="carousel slide">
+                <!-- 轮播（Carousel）指标 -->
+                <ol class="carousel-indicators">
+                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#myCarousel" data-slide-to="1"></li>
+                    <li data-target="#myCarousel" data-slide-to="2"></li>
+                </ol>
+                <!-- 轮播（Carousel）项目 -->
+                <div class="carousel-inner" style="height: 450px;">
+                    <div class="item active">
+                        <img src="../../../images/pc/carousel/carousel-1.jpg" alt="First slide" class="carousel-image" url="https://pro.jd.com/mall/active/3bNfnaMUfEEoe5UTN5K22yyT17re/index.html">
+                    </div>
+                    <div class="item">
+                        <img src="../../../images/pc/carousel/carousel-2.jpg" alt="Second slide" class="carousel-image" url="https://pro.jd.com/mall/active/31su96Fn6PLpbU79AeNWyrt3RJiE/index.html">
+                    </div>
+                    <div class="item">
+                        <img src="../../../images/pc/carousel/carousel-3.jpg" alt="Second slide" class="carousel-image" url="https://pro.jd.com/mall/active/2yEUXoJrnPdmVx7c7YmbVYrqxfW7/index.html">
+                    </div>
+                </div>
+                <!-- 轮播（Carousel）导航 -->
+                <a class="carousel-control left" href="#myCarousel" data-slide="prev">
+                    <span _ngcontent-c3="" aria-hidden="true" class="glyphicon glyphicon-chevron-left" style="top: 46%;left: 46%;"></span>
+                </a>
+                <a class="carousel-control right" href="#myCarousel"data-slide="next">
+                    <span _ngcontent-c3="" aria-hidden="true" class="glyphicon glyphicon-chevron-right" style="top: 46%;left: 46%;"></span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<!--精选-->
+<!--<div id="sift-goods-list-top" class="row">-->
+    <!--<div class="content-width module-title">-->
+        <!--<div class="page-header">-->
+            <!--<h1>站长精选&nbsp;&nbsp;-->
+                <!--<small>好商品</small>-->
+                <!--<small>/</small>-->
+                <!--<small>高优惠</small>-->
+            <!--</h1>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div class="content-width sift-content">-->
+        <!--<div class="sift-content-left">-->
+            <!--<div class="sift-content-border">-->
+                <!--<div class="content-img">-->
+                    <!--<img src="../../../images/pc/02.jpg">-->
+                <!--</div>-->
+                <!--<div class="content-text-info">-->
+                    <!--<p class="sift-goods-name">-->
+                        <!--<a>冬季睡衣女珊瑚绒加厚套头圆领大码法兰绒长袖宽松家居服两件套装1</a>-->
+                    <!--</p>-->
+                    <!--<div class="row ticket-info">-->
+                        <!--<span>现价：</span>-->
+                        <!--<span style="text-decoration: line-through;">¥150.00</span>-->
+                    <!--</div>-->
+                    <!--<div class="row action-but">-->
+                        <!--<div class="col-xs-8">-->
+                            <!--<span>¥-->
+                               <!--<em style="font-size: 26px;">36.95</em>&nbsp;约返现-->
+                           <!--</span>-->
+                        <!--</div>-->
+                        <!--<div class="col-xs-4">-->
+                            <!--<em style="font-size: 20px;">去下单</em>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="sift-content-right">-->
+            <!--<div class="sift-content-border">-->
+                <!--<div class="content-img">-->
+                    <!--<img src="../../../images/pc/02.jpg">-->
+                <!--</div>-->
+                <!--<div class="content-text-info">-->
+                    <!--<p class="sift-goods-name">-->
+                        <!--<a>冬季睡衣女珊瑚绒加厚套头圆领大码法兰绒长袖宽松家居服两件套装1</a>-->
+                    <!--</p>-->
+                    <!--<div class="row ticket-info">-->
+                        <!--<span>现价：</span>-->
+                        <!--<span style="text-decoration: line-through;">¥150.00</span>-->
+                    <!--</div>-->
+                    <!--<div class="row action-but">-->
+                        <!--<div class="col-xs-8">-->
+                            <!--<span>¥-->
+                               <!--<em style="font-size: 26px;">36.95</em>&nbsp;约返现-->
+                           <!--</span>-->
+                        <!--</div>-->
+                        <!--<div class="col-xs-4">-->
+                            <!--<em style="font-size: 20px;">去下单</em>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div class="content-width sift-content sift-pdd">-->
+        <!--<div class="sift-content-left">-->
+            <!--<div class="sift-content-border">-->
+                <!--<div class="content-img">-->
+                    <!--<img src="../../../images/pc/02.jpg">-->
+                <!--</div>-->
+                <!--<div class="content-text-info">-->
+                    <!--<p class="sift-goods-name">-->
+                        <!--<a>冬季睡衣女珊瑚绒加厚套头圆领大码法兰绒长袖宽松家居服两件套装1</a>-->
+                    <!--</p>-->
+                    <!--<div class="row ticket-info">-->
+                        <!--<span>现价：</span>-->
+                        <!--<span style="text-decoration: line-through;">¥150.00</span>-->
+                        <!--<span class="ticket-border">券<b><i> ¥ </i>30</b></span>-->
+                    <!--</div>-->
+                    <!--<div class="row action-but">-->
+                        <!--<div class="col-xs-8">-->
+                            <!--<span>¥-->
+                               <!--<em style="font-size: 26px;">36.95</em>&nbsp;券后价-->
+                           <!--</span>-->
+                        <!--</div>-->
+                        <!--<div class="col-xs-4">-->
+                            <!--<em style="font-size: 20px;">去领券</em>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="sift-content-right">-->
+            <!--<div class="sift-content-border">-->
+                <!--<div class="content-img">-->
+                    <!--<img src="../../../images/pc/02.jpg">-->
+                <!--</div>-->
+                <!--<div class="content-text-info">-->
+                    <!--<p class="sift-goods-name">-->
+                        <!--<a>冬季睡衣女珊瑚绒加厚套头圆领大码法兰绒长袖宽松家居服两件套装1</a>-->
+                    <!--</p>-->
+                    <!--<div class="row ticket-info">-->
+                        <!--<span>现价：</span>-->
+                        <!--<span style="text-decoration: line-through;">¥150.00</span>-->
+                        <!--<span class="ticket-border">券<b><i> ¥ </i>30</b></span>-->
+                    <!--</div>-->
+                    <!--<div class="row action-but">-->
+                        <!--<div class="col-xs-8">-->
+                            <!--<span>¥-->
+                               <!--<em style="font-size: 26px;">36.95</em>&nbsp;券后价-->
+                           <!--</span>-->
+                        <!--</div>-->
+                        <!--<div class="col-xs-4">-->
+                            <!--<em style="font-size: 20px;">去领券</em>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
+<!--京东返现优惠-->
+<div id="jd-goods-list-top" class="row">
+    <div class="content-width module-title">
+        <div class="page-header">
+            <h1>京东优惠&nbsp;&nbsp;
+                <small>享优惠</small>
+                <small>/</small>
+                <small>返现金</small>
+            </h1>
+        </div>
+    </div>
+    <div class="content-width goods-list">
+        <div class="row">
+           <ul id="jdGoodsUl" class="border-jd-hover">
+
+           </ul>
+        </div>
+    </div>
+    <div id="jdNoData" style="text-align: center; margin: 50px; display: none;">
+        <img th:src="@{/images/pc/no-data.png}" src="../../../images/pc/no-data.png" />
+    </div>
+</div>
+<!--京东返现优惠分页-->
+<div class="row">
+    <div class="content-width" style="text-align: center;">
+        <nav aria-label="Page navigation">
+            <ul id="paginationJd" style="margin: 10px 0px;">
+
+            </ul>
+        </nav>
+    </div>
+</div>
+<!--拼多多领券优惠-->
+<div id="pdd-goods-list-top" class="row">
+    <div class="content-width module-title">
+        <div class="page-header">
+            <h1>拼多多优惠&nbsp;&nbsp;
+                <small>领券购</small>
+                <small>/</small>
+                <small>省的多</small>
+            </h1>
+        </div>
+    </div>
+    <div class="content-width goods-list">
+        <div class="row">
+            <ul id="pddGoodsUl" class="border-pdd-hover">
+
+            </ul>
+        </div>
+    </div>
+    <div id="pddNoData" style="text-align: center; margin: 50px; display: none;">
+        <img th:src="@{/images/pc/no-data.png}" src="../../../images/pc/no-data.png" />
+    </div>
+</div>
+
+<!--拼多多返现优惠分页-->
+<div class="row" style="margin-bottom: 50px;">
+    <div class="content-width" style="text-align: center;">
+        <nav aria-label="Page navigation">
+            <ul id="paginationPdd" style="margin: 10px 0px;">
+
+            </ul>
+        </nav>
+    </div>
+</div>
+
+<!--底部-->
+<div th:replace="pc/footer.html :: #footerPage"></div>
+
+<!--侧悬浮-->
+<div class="wuyou-waiter">
+    <ul class="waiter-ul">
+        <li class="wuyou-top">
+            <a id="goTop">
+                <img src="../../../images/pc/icon/right-float-top.png">
+            </a>
+            <div class="waiter-title">返回顶部</div>
+        </li>
+        <!--<li class="wuyou-login">-->
+            <!--<a href="javascript:void(0);">-->
+                <!--<img src="../../../images/pc/icon/right-float-wx.png">-->
+            <!--</a>-->
+            <!--<div class="waiter-title">微信登陆</div>-->
+        <!--</li>-->
+        <!--<li class="wuyou-sift">-->
+            <!--<a href="#sift-goods-list-top">-->
+                <!--<img src="../../../images/pc/icon/right-float-sift.png">-->
+            <!--</a>-->
+            <!--<div class="waiter-title">站长精选</div>-->
+        <!--</li>-->
+        <li class="wuyou-contact">
+            <a href="#jd-goods-list-top">
+                <img src="../../../images/pc/icon/right-float-jd.png">
+            </a>
+            <div class="waiter-title">京东优惠</div>
+        </li>
+        <li class="wuyou-shop"  style="border-bottom: 1px solid #ff6b81;">
+            <a href="#pdd-goods-list-top">
+                <img src="../../../images/pc/icon/right-float-pdd.png" />
+            </a>
+            <div class="waiter-title">拼多多优惠</div>
+        </li>
+    </ul>
+</div>
+<!--登陆-->
+<div th:replace="pc/login.html :: #loginPage"></div>
+<div th:replace="base/import-common.html :: commonJs-pc"></div>
+<script th:src="@{/scripts/pc/top.js}" src="../../../scripts/pc/top.js"></script>
+<script th:src="@{/scripts/pc/index.js}" src="../../../scripts/pc/index.js"></script>
+</body>
+</html>

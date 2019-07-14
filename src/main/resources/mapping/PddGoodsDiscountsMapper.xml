@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.com.jgyhw.sqm.mapper.PddGoodsDiscountsMapper">
+  <resultMap id="BaseResultMap" type="cn.com.jgyhw.sqm.domain.PddGoodsDiscounts">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="goods_id" jdbcType="BIGINT" property="goodsId" />
+    <result column="goods_name" jdbcType="VARCHAR" property="goodsName" />
+    <result column="goods_img_url" jdbcType="VARCHAR" property="goodsImgUrl" />
+    <result column="sales_volume" jdbcType="BIGINT" property="salesVolume" />
+    <result column="price" jdbcType="DOUBLE" property="price" />
+    <result column="discount" jdbcType="DOUBLE" property="discount" />
+    <result column="discount_quota" jdbcType="DOUBLE" property="discountQuota" />
+    <result column="commission" jdbcType="DOUBLE" property="commission" />
+    <result column="commission_rate" jdbcType="DOUBLE" property="commissionRate" />
+    <result column="return_money" jdbcType="DOUBLE" property="returnMoney" />
+    <result column="lowest_price" jdbcType="DOUBLE" property="lowestPrice" />
+    <result column="lowest_price_name" jdbcType="VARCHAR" property="lowestPriceName" />
+    <result column="goods_classify" jdbcType="VARCHAR" property="goodsClassify" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="min_group_price" jdbcType="DOUBLE" property="minGroupPrice" />
+    <result column="min_normal_price" jdbcType="DOUBLE" property="minNormalPrice" />
+    <result column="has_coupon" jdbcType="INTEGER" property="hasCoupon" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, goods_id, goods_name, goods_img_url, sales_volume, price, discount, discount_quota,
+    commission, commission_rate, return_money, lowest_price, lowest_price_name, goods_classify,
+    update_time, min_group_price, min_normal_price, has_coupon
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from pdd_goods_discounts
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from pdd_goods_discounts
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.com.jgyhw.sqm.domain.PddGoodsDiscounts">
+    insert into pdd_goods_discounts (id, goods_id, goods_name,
+      goods_img_url, sales_volume, price,
+      discount, discount_quota, commission,
+      commission_rate, return_money, lowest_price,
+      lowest_price_name, goods_classify, update_time,
+      min_group_price, min_normal_price, has_coupon
+      )
+    values (#{id,jdbcType=VARCHAR}, #{goodsId,jdbcType=BIGINT}, #{goodsName,jdbcType=VARCHAR},
+      #{goodsImgUrl,jdbcType=VARCHAR}, #{salesVolume,jdbcType=BIGINT}, #{price,jdbcType=DOUBLE},
+      #{discount,jdbcType=DOUBLE}, #{discountQuota,jdbcType=DOUBLE}, #{commission,jdbcType=DOUBLE},
+      #{commissionRate,jdbcType=DOUBLE}, #{returnMoney,jdbcType=DOUBLE}, #{lowestPrice,jdbcType=DOUBLE},
+      #{lowestPriceName,jdbcType=VARCHAR}, #{goodsClassify,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP},
+      #{minGroupPrice,jdbcType=DOUBLE}, #{minNormalPrice,jdbcType=DOUBLE}, #{hasCoupon,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.com.jgyhw.sqm.domain.PddGoodsDiscounts">
+    insert into pdd_goods_discounts
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="goodsId != null">
+        goods_id,
+      </if>
+      <if test="goodsName != null">
+        goods_name,
+      </if>
+      <if test="goodsImgUrl != null">
+        goods_img_url,
+      </if>
+      <if test="salesVolume != null">
+        sales_volume,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+      <if test="discount != null">
+        discount,
+      </if>
+      <if test="discountQuota != null">
+        discount_quota,
+      </if>
+      <if test="commission != null">
+        commission,
+      </if>
+      <if test="commissionRate != null">
+        commission_rate,
+      </if>
+      <if test="returnMoney != null">
+        return_money,
+      </if>
+      <if test="lowestPrice != null">
+        lowest_price,
+      </if>
+      <if test="lowestPriceName != null">
+        lowest_price_name,
+      </if>
+      <if test="goodsClassify != null">
+        goods_classify,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="minGroupPrice != null">
+        min_group_price,
+      </if>
+      <if test="minNormalPrice != null">
+        min_normal_price,
+      </if>
+      <if test="hasCoupon != null">
+        has_coupon,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsId != null">
+        #{goodsId,jdbcType=BIGINT},
+      </if>
+      <if test="goodsName != null">
+        #{goodsName,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsImgUrl != null">
+        #{goodsImgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="salesVolume != null">
+        #{salesVolume,jdbcType=BIGINT},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=DOUBLE},
+      </if>
+      <if test="discount != null">
+        #{discount,jdbcType=DOUBLE},
+      </if>
+      <if test="discountQuota != null">
+        #{discountQuota,jdbcType=DOUBLE},
+      </if>
+      <if test="commission != null">
+        #{commission,jdbcType=DOUBLE},
+      </if>
+      <if test="commissionRate != null">
+        #{commissionRate,jdbcType=DOUBLE},
+      </if>
+      <if test="returnMoney != null">
+        #{returnMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="lowestPrice != null">
+        #{lowestPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="lowestPriceName != null">
+        #{lowestPriceName,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsClassify != null">
+        #{goodsClassify,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="minGroupPrice != null">
+        #{minGroupPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="minNormalPrice != null">
+        #{minNormalPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="hasCoupon != null">
+        #{hasCoupon,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.com.jgyhw.sqm.domain.PddGoodsDiscounts">
+    update pdd_goods_discounts
+    <set>
+      <if test="goodsId != null">
+        goods_id = #{goodsId,jdbcType=BIGINT},
+      </if>
+      <if test="goodsName != null">
+        goods_name = #{goodsName,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsImgUrl != null">
+        goods_img_url = #{goodsImgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="salesVolume != null">
+        sales_volume = #{salesVolume,jdbcType=BIGINT},
+      </if>
+      <if test="price != null">
+        price = #{price,jdbcType=DOUBLE},
+      </if>
+      <if test="discount != null">
+        discount = #{discount,jdbcType=DOUBLE},
+      </if>
+      <if test="discountQuota != null">
+        discount_quota = #{discountQuota,jdbcType=DOUBLE},
+      </if>
+      <if test="commission != null">
+        commission = #{commission,jdbcType=DOUBLE},
+      </if>
+      <if test="commissionRate != null">
+        commission_rate = #{commissionRate,jdbcType=DOUBLE},
+      </if>
+      <if test="returnMoney != null">
+        return_money = #{returnMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="lowestPrice != null">
+        lowest_price = #{lowestPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="lowestPriceName != null">
+        lowest_price_name = #{lowestPriceName,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsClassify != null">
+        goods_classify = #{goodsClassify,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="minGroupPrice != null">
+        min_group_price = #{minGroupPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="minNormalPrice != null">
+        min_normal_price = #{minNormalPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="hasCoupon != null">
+        has_coupon = #{hasCoupon,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.com.jgyhw.sqm.domain.PddGoodsDiscounts">
+    update pdd_goods_discounts
+    set goods_id = #{goodsId,jdbcType=BIGINT},
+      goods_name = #{goodsName,jdbcType=VARCHAR},
+      goods_img_url = #{goodsImgUrl,jdbcType=VARCHAR},
+      sales_volume = #{salesVolume,jdbcType=BIGINT},
+      price = #{price,jdbcType=DOUBLE},
+      discount = #{discount,jdbcType=DOUBLE},
+      discount_quota = #{discountQuota,jdbcType=DOUBLE},
+      commission = #{commission,jdbcType=DOUBLE},
+      commission_rate = #{commissionRate,jdbcType=DOUBLE},
+      return_money = #{returnMoney,jdbcType=DOUBLE},
+      lowest_price = #{lowestPrice,jdbcType=DOUBLE},
+      lowest_price_name = #{lowestPriceName,jdbcType=VARCHAR},
+      goods_classify = #{goodsClassify,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      min_group_price = #{minGroupPrice,jdbcType=DOUBLE},
+      min_normal_price = #{minNormalPrice,jdbcType=DOUBLE},
+      has_coupon = #{hasCoupon,jdbcType=INTEGER}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+
+  <select id="selectPddGoodsDiscountsByGoodsId" parameterType="Long" resultType="cn.com.jgyhw.sqm.domain.PddGoodsDiscounts">
+    select * from pdd_goods_discounts where goods_id = #{goodsId}
+  </select>
+
+  <select id="selectPddGoodsDiscountsByGoodsClassifyPage" parameterType="String" resultType="cn.com.jgyhw.sqm.domain.PddGoodsDiscounts">
+    select * from pdd_goods_discounts
+    <where>
+      <if test="goodsClassify != '0'">
+        and goods_classify = #{goodsClassify}
+      </if>
+    </where>
+    order by update_time asc
+  </select>
+
+  <delete id="deletePddGoodsDiscountsByGoodsClassifyAndUpdateTime">
+    delete from pdd_goods_discounts
+    <where>
+      goods_classify = #{goodsClassify}
+      <if test="updateTime != null and updateTime != ''">
+        and update_time &lt; #{updateTime}
+      </if>
+    </where>
+  </delete>
+</mapper>

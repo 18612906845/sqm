@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.com.jgyhw.sqm.mapper.ConfigurationMapper">
+  <resultMap id="BaseResultMap" type="cn.com.jgyhw.sqm.domain.Configuration">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="param_name" jdbcType="VARCHAR" property="paramName" />
+    <result column="param_value" jdbcType="VARCHAR" property="paramValue" />
+    <result column="param_group" jdbcType="VARCHAR" property="paramGroup" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, param_name, param_value, param_group, remark, update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from configuration
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from configuration
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.com.jgyhw.sqm.domain.Configuration">
+    insert into configuration (id, param_name, param_value,
+      param_group, remark, update_time
+      )
+    values (#{id,jdbcType=VARCHAR}, #{paramName,jdbcType=VARCHAR}, #{paramValue,jdbcType=VARCHAR},
+      #{paramGroup,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.com.jgyhw.sqm.domain.Configuration">
+    insert into configuration
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="paramName != null">
+        param_name,
+      </if>
+      <if test="paramValue != null">
+        param_value,
+      </if>
+      <if test="paramGroup != null">
+        param_group,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="paramName != null">
+        #{paramName,jdbcType=VARCHAR},
+      </if>
+      <if test="paramValue != null">
+        #{paramValue,jdbcType=VARCHAR},
+      </if>
+      <if test="paramGroup != null">
+        #{paramGroup,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.com.jgyhw.sqm.domain.Configuration">
+    update configuration
+    <set>
+      <if test="paramName != null">
+        param_name = #{paramName,jdbcType=VARCHAR},
+      </if>
+      <if test="paramValue != null">
+        param_value = #{paramValue,jdbcType=VARCHAR},
+      </if>
+      <if test="paramGroup != null">
+        param_group = #{paramGroup,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.com.jgyhw.sqm.domain.Configuration">
+    update configuration
+    set param_name = #{paramName,jdbcType=VARCHAR},
+      param_value = #{paramValue,jdbcType=VARCHAR},
+      param_group = #{paramGroup,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+
+  <select id="selectConfigurationListByParamGroup" parameterType="String" resultType="cn.com.jgyhw.sqm.domain.Configuration">
+    select * from configuration
+    <where>
+      <if test="paramGroup != null and paramGroup != ''">
+        and param_group = #{paramGroup}
+      </if>
+    </where>
+    order by param_name
+  </select>
+
+  <select id="selectConfigurationByParamNameAndParamGroup" parameterType="String" resultType="cn.com.jgyhw.sqm.domain.Configuration">
+    select * from configuration
+    <where>
+      <if test="paramName != null and paramName != ''">
+        and param_name = #{paramName}
+      </if>
+      <if test="paramGroup != null and paramGroup != ''">
+        and param_group = #{paramGroup}
+      </if>
+    </where>
+  </select>
+
+  <select id="selectConfigurationByParamNameAndParamGroupPage" parameterType="String" resultType="cn.com.jgyhw.sqm.domain.Configuration">
+    select * from configuration
+    <where>
+      <if test="paramName != null and paramName != ''">
+        and param_name LIKE CONCAT('%',#{paramName},'%')
+      </if>
+      <if test="paramGroup != null and paramGroup != ''">
+        and param_group = #{paramGroup}
+      </if>
+    </where>
+    order by param_name
+  </select>
+</mapper>

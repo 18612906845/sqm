@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<div id="importPage-pc">
+    <!-- Bootstrap -->
+    <link th:href="@{/common/library/bootstrap-3.3.7-dist/css/bootstrap.min.css}" href="../../../common/library/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+    <link th:href="@{/custom/pc/css/custom.css}" href="../../../custom/pc/css/custom.css" rel="stylesheet">
+    <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
+    <script th:src="@{/common/library/jquery/jquery-1.11.3.min.js}" src="../../../common/library/jquery/jquery-1.11.3.min.js"></script>
+    <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+    <script th:src="@{/common/library/bootstrap-3.3.7-dist/js/bootstrap.min.js}" src="../../../common/library/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script th:src="@{/common/library/bootstrap-3.3.7-dist/js/bootstrap-paginator.min.js}" src="../../../common/library/bootstrap-3.3.7-dist/js/bootstrap-paginator.min.js"></script>
+    <script th:src="@{/custom/pc/scripts/util.js}" src="../../../custom/pc/scripts/util.js"></script>
+    <!--layui-->
+    <link rel="stylesheet" th:href="@{/common/library/layui-v2.4.5/layui/css/layui.css}" href="../../../common/library/layui-v2.4.5/layui/css/layui.css">
+    <script th:src="@{/common/base/js/basePart.js}" src="../../../common/base/js/basePart.js"></script>
+</div>
+
+<div id="importPage-xtgl">
+    <link rel="stylesheet" th:href="@{/common/library/layui-v2.4.5/layui/css/layui.css}" href="../../../common/library/layui-v2.4.5/layui/css/layui.css">
+    <link rel="stylesheet" th:href="@{/custom/xtgl/css/base-xtgl.css}" href="../../../custom/xtgl/css/base-xtgl.css">
+
+    <script th:src="@{/common/library/jquery/jquery-1.11.3.min.js}" src="../../../common/library/jquery/jquery-1.11.3.min.js"></script>
+    <script th:src="@{/common/library/layui-v2.4.5/layui/layui.js}" src="../../../common/library/layui-v2.4.5/layui/layui.js"></script>
+    <script th:src="@{/common/base/js/basePart.js}" src="../../../common/base/js/basePart.js"></script>
+</div>
+
+<script type="text/javascript" th:inline="javascript" th:fragment="commonJs-pc">
+    /*<![CDATA[*/
+    /**
+     * 项目contextPath
+     */
+    var context = /*[[${#servletContext.contextPath}]]*/ '';
+
+    /**
+     * 项目访问地址协议+端口号
+     */
+    var httpAndHost = window.location.protocol + "//" + window.location.host;
+
+    /**
+     * 退出登陆点击事件
+     */
+    $(document).on('click', '#logout', function () {
+        window.location.href = context +'/logout';
+    });
+
+    /**
+     * 通用常量
+     */
+    var GOODS_RECOMMEND_ORDER_TYPE_DEFAULT=[[${GOODS_RECOMMEND_ORDER_TYPE_DEFAULT}]];
+    var GOODS_RECOMMEND_ORDER_TYPE_YJBL=[[${GOODS_RECOMMEND_ORDER_TYPE_YJBL}]];
+    var GOODS_RECOMMEND_ORDER_TYPE_XL=[[${GOODS_RECOMMEND_ORDER_TYPE_XL}]];
+
+    /*]]>*/
+</script>
+</html>

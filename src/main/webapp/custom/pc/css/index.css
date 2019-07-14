@@ -1,0 +1,410 @@
+.btn {
+    border-radius: 0px;
+}
+
+.row {
+    margin: 0px;
+}
+
+.content-width {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+
+/*导航分类/轮播图*/
+.banner {
+    height: 100%;
+    font-size: 16px;
+}
+
+.banner-classify {
+    padding: 0px;
+    height: 100%;
+    background-color: #fbeaea;
+}
+
+.banner-classify ul {
+    padding: 0px;
+}
+
+.banner-classify li {
+    width: 147px;
+    display: inline-block;
+}
+
+.banner-classify li:hover {
+    background-color: #e3e4e5;
+}
+
+.banner-classify li a {
+    color: #333;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.banner-classify li a:hover {
+    color: #333;
+}
+
+.banner-carousel {
+    padding: 0px;
+    height: 300px;
+}
+
+.carousel-inner img {
+    cursor: pointer;
+}
+
+/*板块标题*/
+.module-title {
+    height: 50px;
+    margin: 15px auto;
+}
+
+.page-header {
+    border-bottom: 0px;
+    padding: 0px;
+    margin: 0px;
+}
+
+.page-header h1 {
+    font-size: 20px;
+    margin: 0px;
+    line-height: 50px;
+}
+
+.page-header small {
+    color: #f44661;
+}
+
+/*精选内容*/
+.sift-content img {
+    width: 308px;
+    height: 308px;
+    cursor: pointer;
+}
+
+.sift-content-left {
+    width: 598px;
+    padding-left: 0px;
+    padding-right: 10px;
+    display: inline-block;
+}
+
+.sift-content-right {
+    width: 598px;
+    padding-left: 10px;
+    padding-right: 0px;
+    display: inline-block;
+}
+
+.sift-content-border {
+    height: 310px;
+    border: 1px solid #eee;
+}
+
+.sift-content-border:hover {
+    border: 1px solid #f44661;
+    box-shadow: 0 0 20px 0 rgba(170, 170, 170, .85);
+}
+
+.content-img {
+    float: left;
+}
+
+.content-text-info {
+    float: left;
+    width: 268px;
+    height: 308px;
+    margin-left: 10px;
+}
+
+.sift-goods-name {
+    font-size: 17px;
+    margin: 50px 0px 0px 0px;
+}
+
+.sift-goods-name a {
+    word-wrap: break-word;
+    text-decoration: none;
+    cursor: pointer;
+    color: #787878;
+}
+
+.ticket-info {
+    font-size: 15px;
+    margin-top: 50px;
+}
+
+.ticket-border {
+    margin-left: 10px;
+    text-align: center;
+    background: #fff7fa;
+    color: #ff0060;
+    height: 24px;
+    padding: 0 8px;
+    border: 1px dotted #ff0060;
+    font-style: normal;
+}
+
+.ticket-border b i {
+    font-style: normal;
+}
+
+.action-but {
+    width: 100%;
+    margin-top: 50px;
+}
+
+.action-but div {
+    padding: 0px;
+    height: 38px;
+}
+
+.action-but span {
+    margin-left: 8px;
+}
+
+.action-but div:first-child {
+    background-color: #f44661;
+    color: #FFF;
+}
+
+.action-but div:last-child {
+    text-align: center;
+    background-color: #fee550;
+    color: #f44661;
+    cursor: pointer;
+}
+
+.action-but em {
+    font-weight: 700;
+    line-height: 40px;
+    font-family: Arial;
+    font-style: normal;
+}
+
+/*拼多多*/
+.sift-pdd {
+    padding-top: 15px;
+}
+
+
+/*商品列表*/
+.goods-list ul {
+    ont: 12px Simsun;
+    margin: 0;
+    padding: 0;
+    clear: both;
+}
+
+.goods-list ul .no-right {
+    margin-right: 0;
+}
+
+.goods-list li {
+    float: left;
+    margin: 0 21px 20px 0;
+    padding: 0;
+    border: 1px solid #eee;
+    height: 400px;
+    width: 284px;
+    background: #fff;
+    display: block;
+    overflow: hidden;
+}
+
+.border-jd-hover li:hover {
+    border: 1px solid #f44661;
+    box-shadow: 0 0 20px 0 rgba(170, 170, 170, .85);
+}
+
+.border-pdd-hover li:hover {
+    border: 1px solid #ff6b81;
+    box-shadow: 0 0 20px 0 rgba(170, 170, 170, .85);
+}
+
+.goods-list li img {
+    width: 284px;
+    height: 284px;
+    cursor: pointer;
+}
+
+.goods-info {
+    padding: 10px;
+}
+
+.goods-name-p{
+    word-break: break-all;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 10px;
+}
+
+.goods-name {
+    margin-left: 10px;
+}
+
+.label-danger {
+    font-weight: 500;
+}
+
+.price-sales-num div {
+    color: #999;
+    padding: 0px;
+}
+
+.price-sales-num div:last-child {
+    text-align: right;
+}
+
+.discount-purchase {
+    margin-top: 10px;
+}
+
+.discount-purchase span {
+    position: relative;
+    color: #ff464e;
+    font-size: 14px;
+    line-height: 30px;
+    font-weight: 500;
+}
+
+.discount-purchase em {
+    font-weight: 700;
+    line-height: 40px;
+    font-family: Arial;
+    font-style: normal;
+}
+
+.discount-purchase i {
+    position: absolute;
+    width: 47px;
+    height: 19px;
+    top: -10px;
+    right: -50px;
+    background: url(../images/yuefanxian-jd.png) center no-repeat;
+    background-size: 47px 19px;
+}
+
+.discount-purchase div {
+    padding: 0px;
+}
+
+.discount-purchase div:last-child {
+    text-align: right;
+}
+
+.pdd-info .label-danger {
+    background-color: #ff6b81;
+}
+
+.pdd-info .discount-purchase span {
+    color: #ff6b81;
+}
+
+.pdd-info .discount-purchase i {
+    background: url(../images/yuefanxian-pdd.png) center no-repeat;
+    background-size: 47px 19px;
+}
+
+.pdd-info .btn-danger {
+    background-color: #ff6b81;
+    border: 1px solid transparent;
+}
+
+/*侧悬浮*/
+.wuyou-waiter {
+    position: fixed;
+    right: 65px;
+    top: 38%;
+    margin-top: 90px;
+    width: 60px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, .3);
+    z-index: 99999;
+}
+
+.waiter-ul {
+    padding-left: 0;
+    margin-bottom: 0px;
+}
+
+.waiter-ul li {
+    position: relative;
+    display: inline-block;
+    height: 58px;
+    width: 60px;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+}
+
+.waiter-title {
+    position: absolute;
+    left: 0px;
+    bottom: 1px;
+    color: #fff;
+    width: 90px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    -webkit-transition: all 0.5s;
+    -ms-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    background-color: #fff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, .3);
+    z-index: 1;
+    opacity: 0;
+}
+
+.waiter-ul img {
+    margin: 9px 10px;
+}
+
+.wuyou-top {
+    background-color: #02b4ff;
+}
+
+.waiter-ul li.wuyou-top .waiter-title {
+    background-color: #02b4ff;
+}
+
+.wuyou-login {
+    background-color: #44b549;
+}
+
+.waiter-ul li.wuyou-login .waiter-title {
+    background-color: #44b549;
+}
+
+.wuyou-sift {
+    background-color: #f49822;
+}
+
+.waiter-ul li.wuyou-sift .waiter-title {
+    background-color: #f49822;
+}
+
+.wuyou-contact {
+    background-color: #ff464e;
+}
+
+.waiter-ul li.wuyou-contact .waiter-title {
+    background-color: #ff464e;
+}
+
+.wuyou-shop {
+    background-color: #ff6b81;
+}
+
+.waiter-ul li.wuyou-shop .waiter-title {
+    background-color: #ff6b81;
+}
+
+.waiter-ul li:hover .waiter-title {
+    left: -90px;
+    opacity: 1;
+}

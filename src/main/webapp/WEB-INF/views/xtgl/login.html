@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="no-js" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>管理员登陆</title>
+
+    <link rel="stylesheet" type="text/css" href="/common/library/weblogin/css/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="/common/library/weblogin/css/demo.css" />
+    <!--必要样式-->
+    <link rel="stylesheet" type="text/css" href="/common/library/weblogin/css/component.css" />
+    <!--[if IE]>
+    <script src="/common/library/weblogin/js/html5.js"></script>
+    <![endif]-->
+    <script src="/common/library/jquery/jquery-1.11.3.min.js"></script>
+    <script src="/common/library/md5/md5.js"></script>
+</head>
+<body>
+<div class="container demo-1">
+    <div class="content">
+        <div id="large-header" class="large-header">
+            <canvas id="demo-canvas"></canvas>
+            <div class="logo_box">
+                <h3>管理员登陆</h3>
+                <form id="loginForm" th:action="@{/loginVerify}" method="post" autocomplete="off">
+                    <div class="input_outer">
+                        <span class="u_user"></span>
+                        <input name="loginname" class="text" style="color: #FFFFFF !important" type="text" placeholder="请输入账户">
+                    </div>
+                    <div class="input_outer">
+                        <span class="us_uer"></span>
+                        <input id="logpass" name="logpass" class="text" style="color: #FFFFFF !important; position:absolute; z-index:100;"value="" type="password" placeholder="请输入密码">
+                        <input id="loginpass" name="loginpass" type="hidden" value="">
+                    </div>
+                    <div class="mb2"><a id="loginBut" class="act-but submit" href="javascript:;" style="color: #FFFFFF">登录</a></div>
+                    <p style="text-align: center;" th:text="${msg}"></p>
+                </form>
+            </div>
+            <div style="width: 400px;color: #FFF;position: absolute;left: 50%;top: 90%;margin-left: -200px;">
+                <p style="text-align: center;"><a id="icpba" style="color: #FFF;" href="javascript:;">京ICP备18044765号</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/common/library/weblogin/js/TweenLite.min.js"></script>
+<script src="/common/library/weblogin/js/EasePack.min.js"></script>
+<script src="/common/library/weblogin/js/rAF.js"></script>
+<script src="/common/library/weblogin/js/demo-1.js"></script>
+<script src="/common/library/weblogin/js/welcome.js"></script>
+</body>
+</html>
