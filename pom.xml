@@ -18,7 +18,7 @@
         <java.version>1.8</java.version>
         <org.codehaus.jackson.version>1.9.13</org.codehaus.jackson.version>
         <dom4j.version>1.6.1</dom4j.version>
-        <xstream.version>1.4.7</xstream.version>
+        <xstream.version>1.4.15</xstream.version>
         <httpcomponents.version>4.5.3</httpcomponents.version>
     </properties>
 
